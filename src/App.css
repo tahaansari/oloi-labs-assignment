@@ -36,8 +36,8 @@
   border-bottom: 2px solid var(--light-bg);
   display: flex;
   justify-content: space-between;
-  padding: 0 14px;
-      color: var(--muted-text);
+  padding: 0 15px;
+  color: var(--muted-text);
 }
 
 .category-list{
@@ -72,8 +72,38 @@
   line-height: 1;
 }
 
-/* .gear-icon{
+.list{
+  padding: 10px 15px;
+}
+.list-item{
+  border-bottom: 2px solid var(--light-bg);
+  padding: 10px 0;
+  display: flex;
+  align-items: start;
+  gap: 14px;
+}
+.list-img-wrap{
+  position: relative;
+}
+.item-img{
+  border-radius: 10px;
+  overflow: hidden;
+}
+.item-img img{
+  display: block;
+}
+.item-status{
   position: absolute;
-  top: 0;
-  right: 0;
-} */
+  bottom: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: green;
+  border: 3px solid white;
+}
+.item-status-text{
+  font-size: .8rem;
+  display: block;
+  color: var(--muted-text);
+}

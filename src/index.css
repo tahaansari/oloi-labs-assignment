@@ -16,9 +16,13 @@
 
 body{
   font-family: 'Roboto', sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   background-color: var(--body-bg);
   color: var(--text-color);
+}
+
+h1,h2,h3,h4,h5,h6{
+  line-height: 1.2;
 }
 
 input,

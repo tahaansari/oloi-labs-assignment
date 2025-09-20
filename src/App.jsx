@@ -3,6 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { GrAttachment } from "react-icons/gr";
 import { GoGear } from "react-icons/go";
 import './App.css'
+import List from './components/list';
 
 function App() {
   const [search,setSearch] = useState();
@@ -83,6 +84,7 @@ function App() {
                 </div>
               </div> */}
             </div>
+            <List/>
           </div>
       </div>
     </>
