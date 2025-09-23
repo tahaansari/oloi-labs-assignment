@@ -1,0 +1,39 @@
+/* Hide the default checkbox */
+    .toggle input {
+      display: none;
+    }
+
+    /* The switch container */
+    .switch {
+      display: block;
+      width: 26px;
+      height: 14.01px;
+      background: var(--muted-text);
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    /* The round knob */
+    .switch::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      /* box-shadow: 0 1px 3px rgba(0,0,0,0.3); */
+    }
+
+    /* Checked state */
+    .toggle input:checked + .switch {
+      background: var(--text-color); /* green */
+    }
+
+    .toggle input:checked + .switch::before {
+      transform: translateX(12px);
+    }

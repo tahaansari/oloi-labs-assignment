@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { FiSearch } from "react-icons/fi";
 import { GrAttachment } from "react-icons/gr";
-import { GoGear } from "react-icons/go";
 import './App.css'
 import List from './components/list';
+import CategoryMore from './components/category-more/CategoryMore';
 
 function App() {
   const [search,setSearch] = useState();
@@ -53,36 +53,7 @@ function App() {
                     <span className='category-item-count'>2</span>
                   </li>
                 </ul>
-                <div className='category-more'>
-                  <GoGear />
-                </div>
-              {/* <div>
-                <span>Icon</span>
-                <div className='category-box'>
-                  <ul className='category-box-list'>
-                    <li>
-                      <span>icon</span>
-                      Files
-                      <span>icon</span>
-                    </li>
-                    <li>
-                      <span>icon</span>
-                      Files
-                      <span>icon</span>
-                    </li>
-                    <li>
-                      <span>icon</span>
-                      Files
-                      <span>icon</span>
-                    </li>
-                    <li>
-                      <span>icon</span>
-                      Files
-                      <span>icon</span>
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
+                <CategoryMore/>
             </div>
             <List/>
           </div>

@@ -1,0 +1,91 @@
+.list{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.listItem{
+  padding: 0px 15px;
+}
+.listItem:hover{
+  background-color: var(--light-bg);
+}
+.listItem:hover .listOptions{
+  display: block;
+}
+.listItemWrap{
+  gap: 14px;
+  padding: 14px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--light-bg);
+}
+.listItemLeft{
+  display: flex;
+  gap: 10px;
+}
+.listItemActive{
+  background-color: var(--light-bg);
+}
+.listImgWrap{
+  position: relative;
+}
+.itemImg{
+  border-radius: 10px;
+  overflow: hidden;
+}
+.itemImg img{
+  display: block;
+}
+.itemStatus{
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: green;
+  border: 3px solid white;
+}
+.itemStatusText{
+  font-size: .8rem;
+  display: block;
+  color: var(--muted-text);
+}
+.listOptions{
+  /* display: none; */
+}
+.listOptionsRow{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.listOptionsCopyIco{
+  display: block;
+  cursor: pointer;
+}
+.listOptionsItems{
+  display: flex; 
+  align-items: center;
+  gap: 4px;
+  color: var(--muted-text);
+  font-size: .7rem;
+  cursor: pointer;
+}
+
+.copyIcon{
+  position: relative;
+}
+
+.copyIconText{
+  position: absolute;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 3px 6px;
+  line-height: normal;
+  font-size: .6rem;
+  left: 50%;
+  top: 0;
+  white-space: nowrap;
+  transform: translate(-50%,-120%);
+}

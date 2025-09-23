@@ -1,0 +1,61 @@
+.categoryMore{
+    position: relative;
+}
+.gearIconSvg{
+    display: block;
+    cursor: pointer;
+    transition: .3s
+}
+.gearIconSvgActive{
+    transform: rotate(90deg);
+}
+.categoryBox{
+    position: absolute;
+    right: 0;
+    overflow: hidden;
+    top: 30px;
+    /* overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;    */
+}
+.categoryBoxActive{
+    /* max-height: 500px; */
+}
+.categoryBoxContent{
+    background-color: white;
+    border-radius: 5px;
+    padding: 4px 8px;
+    box-shadow: 0 0 2px var(--muted-text);
+    min-width: 180px;
+    margin: 2px;
+  
+    
+}
+.categoryBoxList{
+    list-style: none;
+}
+.categoryBoxLi{
+    padding: 4px 0;
+}
+.categoryBoxItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 4px 10px;
+}
+.categoryBoxItemActive{
+    background-color: var(--light-bg);
+}
+.categoryBoxItem:hover{
+    background-color: var(--light-bg);
+}
+.categoryBoxItemLeft{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.categoryBoxItemRight{
+    
+}
