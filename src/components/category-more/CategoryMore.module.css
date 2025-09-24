@@ -4,12 +4,14 @@
 .gearIconSvg{
     display: block;
     cursor: pointer;
-    transition: .3s
+    transition: .3s;
+    color:var(--text-muted)
 }
 .gearIconSvgActive{
     transform: rotate(90deg);
 }
 .categoryBox{
+    z-index: 1000;
     position: absolute;
     right: 0;
     overflow: hidden;
@@ -44,6 +46,7 @@
     justify-content: space-between;
     border-radius: 4px;
     padding: 4px 10px;
+    text-transform: capitalize;
 }
 .categoryBoxItemActive{
     background-color: var(--light-bg);

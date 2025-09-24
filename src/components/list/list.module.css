@@ -47,7 +47,7 @@
   border: 3px solid white;
 }
 .itemStatusText{
-  font-size: .8rem;
+  font-size: .9rem;
   display: block;
   color: var(--muted-text);
 }
@@ -75,6 +75,10 @@
 .copyIcon{
   position: relative;
 }
+.copyIcon:hover .copyIconText{
+  transform: translate(-50%,-120%) scale(1);
+}
+
 
 .copyIconText{
   position: absolute;
@@ -87,5 +91,7 @@
   left: 50%;
   top: 0;
   white-space: nowrap;
-  transform: translate(-50%,-120%);
+  transform: translate(-50%,-120%) scale(0);
+  transition: .2s;
+  transform-origin: bottom;
 }

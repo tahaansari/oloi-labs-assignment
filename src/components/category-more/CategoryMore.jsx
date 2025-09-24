@@ -11,12 +11,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 
-const CategoryMore = () => {
+const CategoryMore = ({category, handleToggle}) => {
   const [showBox,setShowBox] = useState(false);
+
   return (
     <>
       <div className={s.categoryMore}>
-        <GoGear className={`${s.gearIconSvg} ${showBox ? s.gearIconSvgActive : "" }`}   onClick={()=>{ setShowBox((prev)=> !prev ) }} />
+        <GoGear size={25} className={`${s.gearIconSvg} ${showBox ? s.gearIconSvgActive : "" }`}   onClick={()=>{ setShowBox((prev)=> !prev ) }} />
         <AnimatePresence>
           {showBox && <motion.div 
             initial={{ height: 0 }}
@@ -26,50 +27,23 @@ const CategoryMore = () => {
             className={`${s.categoryBox} ${showBox ? s.categoryBoxActive : "" }`}>
             <div className={s.categoryBoxContent}>
               <ul className={s.categoryBoxList}>
-                <li className={s.categoryBoxLi}>
-                  <div className={`${s.categoryBoxItem} ${s.categoryBoxItemActive}`}>
-                    <div className={s.categoryBoxItemLeft}>
-                      <GrAttachment />
-                      Files
-                    </div>
-                    <div className={s.categoryBoxItemRight}>
-                      <InputSwitch />
-                    </div>
-                  </div>
-                </li>
-                <li className={s.categoryBoxLi}>
-                  <div className={s.categoryBoxItem}>
-                    <div className={s.categoryBoxItemLeft}>
-                      <LuUser />
-                      People
-                    </div>
-                    <div className={s.categoryBoxItemRight}>
-                      <InputSwitch />
-                    </div>
-                  </div>
-                </li>
-                <li className={s.categoryBoxLi}>
-                  <div className={s.categoryBoxItem}>
-                    <div className={s.categoryBoxItemLeft}>
-                      <RiChat3Line />
-                      Chats
-                    </div>
-                    <div className={s.categoryBoxItemRight}>
-                      <InputSwitch />
-                    </div>
-                  </div>
-                </li>
-                <li className={s.categoryBoxLi}>
-                  <div className={s.categoryBoxItem}>
-                    <div className={s.categoryBoxItemLeft}>
-                      <BsList />
-                      Lists
-                    </div>
-                    <div className={s.categoryBoxItemRight}>
-                      <InputSwitch />
-                    </div>
-                  </div>
-                </li>
+                { 
+                  category.map((item,index)=>{
+                    return (
+                        <li key={index} className={s.categoryBoxLi}>
+                          <div className={s.categoryBoxItem}>
+                            <div className={s.categoryBoxItemLeft}>
+                              <GrAttachment size={15} />
+                              {item.name}
+                            </div>
+                            <div className={s.categoryBoxItemRight}>
+                              <InputSwitch id={item.id} checked={item.isVisible} handleToggle={handleToggle} />
+                            </div>
+                          </div>
+                        </li>
+                    )
+                  })
+                }
               </ul>
             </div>
           </motion.div>}

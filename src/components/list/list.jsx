@@ -7,16 +7,15 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const List = () => {
-  const [showTooltip, setShowTooltip] = useState(false);
-
+  const [toolTipText, setToolTipText] = useState("Copy link");
   const handleCopyLink = (text) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
         console.log("Copied to clipboard:", text);
-        setShowTooltip(true);
+        setToolTipText("Link copied!!");
         setTimeout(() => {
-          setShowTooltip(false);
+          setToolTipText("Copy link");
         }, 1000);
       })
       .catch((err) => {
@@ -44,22 +43,14 @@ const List = () => {
               <div className={s.listOptionsRow}>
                 <div className={s.copyIcon}>
                   <IoIosLink
-                    color="#9a9a9a"
                     onClick={() => handleCopyLink("Hello World..")}
-                    className={s.listOptionsCopyIco}
+                    className={s.listOptionsCopyIco }
                   />
-                  <AnimatePresence>
-                    <motion.div
-                      key="box"
-                      initial={{ scale: 0.5 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0.5 }}
-                      transition={{ duration: 0.1 }}
+                    <div
                       className={s.copyIconText}
                     >
-                      Copy link
-                    </motion.div>
-                  </AnimatePresence>
+                      {toolTipText}
+                    </div>
                 </div>
                 <a href="https://google.com" target="_blank" rel="noopener noreferrer">
                   <div className={s.listOptionsItems}>

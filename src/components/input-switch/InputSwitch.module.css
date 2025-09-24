@@ -6,8 +6,8 @@
     /* The switch container */
     .switch {
       display: block;
-      width: 26px;
-      height: 14.01px;
+      width: 30px;
+      height: 18.01px;
       background: var(--muted-text);
       border-radius: 50px;
       position: relative;
@@ -21,8 +21,8 @@
       position: absolute;
       top: 2px;
       left: 2px;
-      width: 10px;
-      height: 10px;
+      width: 14px;
+      height: 14px;
       background: white;
       border-radius: 50%;
       transition: transform 0.3s;
