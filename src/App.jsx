@@ -8,12 +8,15 @@ import CategoryMore from "./components/category-more/CategoryMore";
 
 function App() {
   const [search, setSearch] = useState("");
+
   const [category, setCategory] = useState([
     { id: 1, name: "files", isVisible: false },
     { id: 2, name: "people", isVisible: true },
     { id: 3, name: "chats", isVisible: false },
     { id: 4, name: "lists", isVisible: true },
   ]);
+
+  const [selectedIndex,setSelectedIndex] = useState(null);
 
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = ID
   const handleToggle = (id, isChecked) => {
@@ -61,21 +64,17 @@ function App() {
             <span className="clear">Clear</span>
           </div>
           <div className="category">
-            <ul className="category-list">
-              <li className="category-item category-item-active">
-                All
-                <span className="category-item-count">8</span>
-              </li>
+            <div className="category-list">
               {showActiveCategory().map((item,index)=>{
                 return (
-                  <li className="category-item">
-                    <GrAttachment/>
-                    {item.name}
-                    <span className="category-item-count">8</span>
-                  </li>
+                    <button className={`${selectedIndex == item.id ? "category-item category-item--active":"category-item"}`} onClick={()=>console.log('tab clicked')}>
+                      <GrAttachment/>
+                      <span>{item.name}</span>
+                      <span className="category-item-count">8</span>
+                    </button>
                 )
               })}
-            </ul>
+            </div>
             <CategoryMore category={category} handleToggle={handleToggle} />
           </div>
           <List />
