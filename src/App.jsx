@@ -52,7 +52,8 @@ function App() {
       </p> */}
       <div className="app">
         <div className="search-box">
-          <div className="search-input-wrap">
+          <h1>Hello World!!</h1>
+          {/* <div className="search-input-wrap">
             <FiSearch className="color-muted" size={25} />
             <input
               className="search-input"
@@ -67,8 +68,8 @@ function App() {
             <div className="category-list">
               {showActiveCategory().map((item,index)=>{
                 return (
-                    <button className={`${selectedIndex == item.id ? "category-item category-item--active":"category-item"}`} onClick={()=>console.log('tab clicked')}>
-                      <GrAttachment/>
+                    <button className={`${selectedIndex == item.id ? "category-item category-item-active":"category-item"}`} onClick={()=> setSelectedIndex(item.id)}>
+                      <GrAttachment size={20}/>
                       <span>{item.name}</span>
                       <span className="category-item-count">8</span>
                     </button>
@@ -77,7 +78,7 @@ function App() {
             </div>
             <CategoryMore category={category} handleToggle={handleToggle} />
           </div>
-          <List />
+          <List /> */}
         </div>
       </div>
     </>
