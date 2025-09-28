@@ -17,7 +17,7 @@ const CategoryMore = ({category, handleToggle}) => {
   return (
     <>
       <div className={s.categoryMore}>
-        <GoGear size={25} className={`${s.gearIconSvg} ${showBox ? s.gearIconSvgActive : "" }`}   onClick={()=>{ setShowBox((prev)=> !prev ) }} />
+        <GoGear className={`icon ${s.gearIconSvg} ${showBox ? s.gearIconSvgActive : "" }`} onClick={()=>{ setShowBox((prev)=> !prev ) }} />
         <AnimatePresence>
           {showBox && <motion.div 
             initial={{ height: 0 }}
@@ -33,7 +33,7 @@ const CategoryMore = ({category, handleToggle}) => {
                         <li key={index} className={s.categoryBoxLi}>
                           <div className={s.categoryBoxItem}>
                             <div className={s.categoryBoxItemLeft}>
-                              <GrAttachment size={15} />
+                              <GrAttachment className="icon"/>
                               {item.name}
                             </div>
                             <div className={s.categoryBoxItemRight}>

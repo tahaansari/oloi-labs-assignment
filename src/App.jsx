@@ -53,7 +53,7 @@ function App() {
       <div className="app">
         <div className="search-box">
           <div className="search-input-wrap">
-            <FiSearch className="color-muted" size={25} />
+            <FiSearch className="icon"/>
             <input
               className="search-input"
               type="text"
@@ -68,7 +68,7 @@ function App() {
               {showActiveCategory().map((item,index)=>{
                 return (
                     <button className={`${selectedIndex == item.id ? "category-item category-item-active":"category-item"}`} onClick={()=> setSelectedIndex(item.id)}>
-                      <GrAttachment size={20}/>
+                      <GrAttachment className="icon"/>
                       <span>{item.name}</span>
                       <span className="category-item-count">8</span>
                     </button>
@@ -77,7 +77,7 @@ function App() {
             </div>
             <CategoryMore category={category} handleToggle={handleToggle} />
           </div>
-          {/* <List /> */}
+          <List />
         </div>
       </div>
     </>

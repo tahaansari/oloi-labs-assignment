@@ -29,6 +29,9 @@
 .listImgWrap{
   position: relative;
 }
+.itemContent{
+  padding: 5px 0;
+}
 .itemImg{
   border-radius: 10px;
   overflow: hidden;
@@ -47,9 +50,9 @@
   border: 3px solid white;
 }
 .itemStatusText{
-  font-size: .9rem;
   display: block;
   color: var(--muted-text);
+  font-size: 1.2rem;
 }
 .listOptions{
   /* display: none; */
@@ -59,16 +62,12 @@
   align-items: center;
   gap: 8px;
 }
-.listOptionsCopyIco{
-  display: block;
-  cursor: pointer;
-}
+
 .listOptionsItems{
   display: flex; 
   align-items: center;
   gap: 4px;
   color: var(--muted-text);
-  font-size: .7rem;
   cursor: pointer;
 }
 
@@ -87,11 +86,11 @@
   border-radius: 4px;
   padding: 3px 6px;
   line-height: normal;
-  font-size: .6rem;
   left: 50%;
   top: 0;
   white-space: nowrap;
   transform: translate(-50%,-120%) scale(0);
   transition: .2s;
   transform-origin: bottom;
+
 }

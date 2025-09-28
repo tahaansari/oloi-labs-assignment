@@ -42,20 +42,20 @@ const List = () => {
             <div className={s.listOptions}>
               <div className={s.listOptionsRow}>
                 <div className={s.copyIcon}>
-                  <IoIosLink
-                    onClick={() => handleCopyLink("Hello World..")}
-                    className={s.listOptionsCopyIco }
-                  />
-                    <div
+                    <IoIosLink
+                      onClick={() => handleCopyLink("Hello World..")}
+                      className=""
+                    />
+                    <span
                       className={s.copyIconText}
                     >
                       {toolTipText}
-                    </div>
+                    </span>
                 </div>
                 <a href="https://google.com" target="_blank" rel="noopener noreferrer">
                   <div className={s.listOptionsItems}>
-                    <MdOpenInNew color="#9a9a9a" size={16} />
-                    <div>New Tab</div>
+                    <MdOpenInNew className="icon-sm"/>
+                    <span>New Tab</span>
                   </div>
                 </a>
               </div>
