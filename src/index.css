@@ -30,8 +30,8 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
+	/* font-size: 100%; */
+	/* font: inherit; */
 	vertical-align: baseline;
 }
 article, aside, details, figcaption, figure, 
@@ -76,8 +76,28 @@ button {
   font-family: inherit; 
 }
 
+@media (max-width: 768px) {
+  input{
+    font-size: .9rem;
+  }
+}
+
 a{
   text-decoration: none;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  body{
+    font-size: 1rem; 
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 /* input:focus {

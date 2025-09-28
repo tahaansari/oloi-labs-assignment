@@ -52,8 +52,7 @@ function App() {
       </p> */}
       <div className="app">
         <div className="search-box">
-          <h1>Hello World!!</h1>
-          {/* <div className="search-input-wrap">
+          <div className="search-input-wrap">
             <FiSearch className="color-muted" size={25} />
             <input
               className="search-input"
@@ -78,7 +77,7 @@ function App() {
             </div>
             <CategoryMore category={category} handleToggle={handleToggle} />
           </div>
-          <List /> */}
+          {/* <List /> */}
         </div>
       </div>
     </>
