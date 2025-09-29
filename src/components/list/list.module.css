@@ -12,12 +12,13 @@
   display: block;
 }
 .listItemWrap{
-  gap: 14px;
-  padding: 14px 0px;
+  gap: 1.4rem;
+  padding: 1.4rem 0rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid var(--light-bg);
+  
 }
 .listItemLeft{
   display: flex;
@@ -28,6 +29,8 @@
 }
 .listImgWrap{
   position: relative;
+  width: 45px;
+  height: 45px;
 }
 .itemContent{
   padding: 5px 0;
@@ -40,14 +43,14 @@
   display: block;
 }
 .itemStatus{
-  position: absolute;
-  bottom: -3px;
-  right: -3px;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background-color: green;
-  border: 3px solid white;
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    background-color: green;
+    border: 3px solid white;
 }
 .itemStatusText{
   display: block;
@@ -60,7 +63,7 @@
 .listOptionsRow{
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
 }
 
 .listOptionsItems{
@@ -84,7 +87,7 @@
   background-color: black;
   color: white;
   border-radius: 4px;
-  padding: 3px 6px;
+  padding: .3rem .6rem;
   line-height: normal;
   left: 50%;
   top: 0;
@@ -92,5 +95,4 @@
   transform: translate(-50%,-120%) scale(0);
   transition: .2s;
   transform-origin: bottom;
-
 }

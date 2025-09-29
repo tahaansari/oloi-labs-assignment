@@ -52,6 +52,7 @@ function App() {
       </p> */}
       <div className="app">
         <div className="search-box">
+          <h1 className="test-h1">Hello</h1>
           <div className="search-input-wrap">
             <FiSearch className="icon"/>
             <input

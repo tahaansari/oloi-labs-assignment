@@ -86,17 +86,7 @@ a{
 
 html{
     box-sizing: border-box;
-    font-size: 10px;
-}
-
-body{
-  font-size: 1.6rem; 
-}
-
-@media (max-width: 768px) {
-  body{
-    font-size: 1.4rem; 
-  }
+    font-size: clamp(1rem,,2rem);
 }
 
 *, *::before, *::after {
@@ -119,19 +109,40 @@ body{
 }
 
 .icon {
-  font-size: 2.5rem; 
+  font-size: clamp(14px, 1vw + 1rem, 18px);
   color: var(--muted-text);
+  vertical-align: middle;
 }
 
 .icon-sm{
-  font-size: 1.6rem
+  font-size: 1.6rem;
+  color: var(--muted-text);
+  vertical-align: middle;
+}
+
+.font-sm{
+  font-size: 1.4rem;
+}
+
+.font-lg{
+  font-size: 1.8rem;
+}
+
+.test-h1{
+  background-color: blue;
+  padding: clamp(15px,2vw,25px);
+  /* padding: 2vw; */
+  font-size: 1rem;
 }
 
 @media (max-width: 768px ) {
+  .font-lg{
+    font-size: 1.6rem;
+  }
+  .font-sm{
+    font-size: 1.2rem;
+  }
   .icon-sm{
     font-size: 1.4rem
   }
-  .icon {
-    font-size: 2rem; 
-  } 
 }

@@ -30,7 +30,7 @@ const List = () => {
             <div className={s.listItemLeft}>
               <div className={s.listImgWrap}>
                 <div className={s.itemImg}>
-                  <img src="https://placehold.co/40" alt="" />
+                  <img src="https://placehold.co/45" alt="" />
                 </div>
                 <span className={s.itemStatus}></span>
               </div>
@@ -44,10 +44,10 @@ const List = () => {
                 <div className={s.copyIcon}>
                     <IoIosLink
                       onClick={() => handleCopyLink("Hello World..")}
-                      className=""
+                      className="icon-sm"
                     />
                     <span
-                      className={s.copyIconText}
+                      className={`font-sm ${s.copyIconText}`}
                     >
                       {toolTipText}
                     </span>
