@@ -10,6 +10,7 @@
   --mobile: 768px;
   --tablet: 992px;
   --desktop: 1200px;
+   --rem-base: 16;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -86,7 +87,7 @@ a{
 
 html{
     box-sizing: border-box;
-    font-size: clamp(1rem,,2rem);
+    font-size: clamp(0.875rem,2vw,1rem);
 }
 
 *, *::before, *::after {
@@ -126,13 +127,6 @@ html{
 
 .font-lg{
   font-size: 1.8rem;
-}
-
-.test-h1{
-  background-color: blue;
-  padding: clamp(15px,2vw,25px);
-  /* padding: 2vw; */
-  font-size: 1rem;
 }
 
 @media (max-width: 768px ) {

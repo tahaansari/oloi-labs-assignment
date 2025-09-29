@@ -13,7 +13,8 @@
 }
 .listItemWrap{
   gap: 1.4rem;
-  padding: 1.4rem 0rem;
+  padding-top: clamp(1rem, 2vw, 1.25rem);
+  padding-bottom: clamp(1rem, 2vw, 1.25rem);
   display: flex;
   align-items: center;
   justify-content: space-between;

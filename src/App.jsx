@@ -6,8 +6,25 @@ import "./App.css";
 import List from "./components/list";
 import CategoryMore from "./components/category-more/CategoryMore";
 
+import { useEffect } from 'react';
+
 function App() {
   const [search, setSearch] = useState("");
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const [category, setCategory] = useState([
     { id: 1, name: "files", isVisible: false },
@@ -51,9 +68,10 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
       <div className="app">
+        
         <div className="search-box">
-          <h1 className="test-h1">Hello</h1>
-          <div className="search-input-wrap">
+          <h1>Hello World</h1>
+          {/* <div className="search-input-wrap">
             <FiSearch className="icon"/>
             <input
               className="search-input"
@@ -78,7 +96,7 @@ function App() {
             </div>
             <CategoryMore category={category} handleToggle={handleToggle} />
           </div>
-          <List />
+          <List /> */}
         </div>
       </div>
     </>
