@@ -33,7 +33,7 @@ const CategoryMore = ({category, handleToggle}) => {
                         <li key={index} className={s.categoryBoxLi}>
                           <div className={s.categoryBoxItem}>
                             <div className={s.categoryBoxItemLeft}>
-                              <GrAttachment className="icon"/>
+                              <GrAttachment className="icon icon-sm"/>
                               {item.name}
                             </div>
                             <div className={s.categoryBoxItemRight}>

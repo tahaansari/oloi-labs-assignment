@@ -1,0 +1,23 @@
+.search{
+  display: flex;
+  align-items: center;
+  padding-left:  clamp(var(--size-md),2vw,var(--size-lg));
+  padding-right: clamp(var(--size-md),2vw,var(--size-lg));
+  margin-bottom: clamp(var(--size-sm),2vw,var(--size-md));
+  gap: .5rem;
+}
+
+.search__input{
+  border: none;
+  width: 100%;
+  padding: 0;
+  flex: 1;
+}
+
+.search__input:focus {
+  outline: none; /* removes the browser's default outline */
+}
+
+.search__clear{
+  text-decoration: underline;
+}

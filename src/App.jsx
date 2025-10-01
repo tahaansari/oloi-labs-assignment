@@ -1,30 +1,11 @@
 import { useState } from "react";
-import { FiSearch } from "react-icons/fi";
-import { GrAttachment } from "react-icons/gr";
-import { LuUser } from "react-icons/lu";
+// import { LuUser } from "react-icons/lu";
 import "./App.css";
+import Category from "./components/category/Category";
 import List from "./components/list";
-import CategoryMore from "./components/category-more/CategoryMore";
-
-import { useEffect } from 'react';
+import Search from "./components/search/Search";
 
 function App() {
-  const [search, setSearch] = useState("");
-
-  const [width, setWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // cleanup listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const [category, setCategory] = useState([
     { id: 1, name: "files", isVisible: false },
@@ -33,70 +14,23 @@ function App() {
     { id: 4, name: "lists", isVisible: true },
   ]);
 
-  const [selectedIndex,setSelectedIndex] = useState(null);
-
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = ID
   const handleToggle = (id, isChecked) => {
     // console.log(id,isChecked)
-    setCategory((prev)=>prev.map((item)=>{
-      return item.id === id ? {...item, isVisible:isChecked} : item;
-    }))
+    setCategory((prev) =>
+      prev.map((item) => {
+        return item.id === id ? { ...item, isVisible: isChecked } : item;
+      })
+    );
   };
-
-  const showActiveCategory = () => category.filter(item => item.isVisible);
 
   return (
     <>
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div> */}
-      {/* <h1>Vite + React</h1> */}
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div> */}
-      {/* <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
       <div className="app">
-        
         <div className="search-box">
-          <h1>Hello World</h1>
-          {/* <div className="search-input-wrap">
-            <FiSearch className="icon"/>
-            <input
-              className="search-input"
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Searching is easier"
-            />
-            <span className="clear">Clear</span>
-          </div>
-          <div className="category">
-            <div className="category-list">
-              {showActiveCategory().map((item,index)=>{
-                return (
-                    <button className={`${selectedIndex == item.id ? "category-item category-item-active":"category-item"}`} onClick={()=> setSelectedIndex(item.id)}>
-                      <GrAttachment className="icon"/>
-                      <span>{item.name}</span>
-                      <span className="category-item-count">8</span>
-                    </button>
-                )
-              })}
-            </div>
-            <CategoryMore category={category} handleToggle={handleToggle} />
-          </div>
-          <List /> */}
+          <Search />
+          <Category category={category} handleToggle={handleToggle}/>
+          <List />
         </div>
       </div>
     </>
