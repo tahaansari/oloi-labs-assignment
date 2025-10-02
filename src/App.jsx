@@ -14,6 +14,48 @@ function App() {
     { id: 4, name: "lists", isVisible: true },
   ]);
 
+  const [data, setData] = useState([
+    {
+      id: 1,
+      type: "people",
+      name: "Randall Johnsson",
+      status: "Active now",
+      icon: "🧑‍💼", // you can replace with actual image/icon path
+    },
+    {
+      id: 2,
+      type: "files",
+      name: "Random Michal Folder",
+      details: "12 Files",
+      location: "in Photos",
+      updated: "Edited 12m ago",
+      icon: "📁",
+    },
+    {
+      id: 3,
+      type: "files",
+      name: "crative_file_frandkies.jpg",
+      location: "in Photos/Assets",
+      updated: "Edited 12m ago",
+      icon: "🖼️",
+    },
+    {
+      id: 4,
+      type: "people",
+      name: "Kristinge Karand",
+      status: "Active 2d ago",
+      icon: "🧑‍💼",
+    },
+    {
+      id: 5,
+      type: "files",
+      name: "files_krande_michelle.avi",
+      location: "in Videos",
+      updated: "Added 12m ago",
+      icon: "🎬",
+    },
+  ]);
+
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = ID
   const handleToggle = (id, isChecked) => {
     // console.log(id,isChecked)
@@ -30,7 +72,7 @@ function App() {
         <div className="search-box">
           <Search />
           <Category category={category} handleToggle={handleToggle}/>
-          <List />
+          <List data={data}/>
         </div>
       </div>
     </>

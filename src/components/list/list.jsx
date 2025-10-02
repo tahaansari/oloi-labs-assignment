@@ -4,9 +4,7 @@ import { MdOpenInNew } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 import { useState } from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
-
-const List = () => {
+const List = ({ data }) => {
   const [toolTipText, setToolTipText] = useState("Copy link");
   const handleCopyLink = (text) => {
     navigator.clipboard
@@ -25,43 +23,57 @@ const List = () => {
   return (
     <>
       <div className={s.list}>
-        <div className={s.listItem}>
-          <div className={s.listItemWrap}>
-            <div className={s.listItemLeft}>
-              <div className={s.listImgWrap}>
-                <div className={s.itemImg}>
-                  <img src="https://placehold.co/45" alt="" />
-                </div>
-                <span className={s.itemStatus}></span>
-              </div>
-              <div className={s.itemContent}>
-                <h4>Randall Johnsson</h4>
-                <span className={s.itemStatusText}>Active Now</span>
-              </div>
-            </div>
-            <div className={s.listOptions}>
-              <div className={s.listOptionsRow}>
-                <div className={s.copyIcon}>
-                    <IoIosLink
-                      onClick={() => handleCopyLink("Hello World..")}
-                      className="icon-sm"
-                    />
-                    <span
-                      className={`font-sm ${s.copyIconText}`}
-                    >
-                      {toolTipText}
-                    </span>
-                </div>
-                <a href="https://google.com" target="_blank" rel="noopener noreferrer">
-                  <div className={s.listOptionsItems}>
-                    <MdOpenInNew className="icon-sm"/>
-                    <span>New Tab</span>
+        {data.map((item, index) => {
+          return (
+            <div key={index} className={s.listItem}>
+              <div className={s.listItemWrap}>
+                <div className={s.listItemLeft}>
+                  <div className={s.listImgWrap}>
+                    <div className={s.itemImg}>
+                      <img src="https://placehold.co/46" alt="" />
+                    </div>
+                    <span className={s.itemStatus}></span>
                   </div>
-                </a>
+                  <div className={s.itemContent}>
+                    <h4 className={s.itemTitle}>{item.name}</h4>{" "}
+                    {item.details && <span className={s.detailsCount}>{item.details}</span>}
+                    <ul className={s.itemList}>
+                      {item.status && (
+                        <li className={s.itemListLi}>
+                          <span className={`font-sm ${s.itemStatusText}`}>{item.status}</span>
+                        </li>
+                      )}
+                      {item.location && (
+                        <li className={s.itemListLi}>
+                          <span className={`font-sm ${s.itemStatusText}`}>{item.location}</span>
+                        </li>
+                      )}
+                      {item.updated && (
+                        <li className={s.itemListLi}>
+                          <span className={`font-sm ${s.itemStatusText}`}>{item.updated}</span>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </div>
+                <div className={s.listOptions}>
+                  <div className={s.listOptionsRow}>
+                    <div className={s.copyIcon}>
+                      <IoIosLink onClick={() => handleCopyLink("Hello World..")} className="icon icon-sm" />
+                      <span className={`font-sm ${s.copyIconText}`}>{toolTipText}</span>
+                    </div>
+                    <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+                      <div className={s.listOptionsItems}>
+                        <MdOpenInNew className="icon-sm" />
+                        <span className="font-sm">New Tab</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </>
   );

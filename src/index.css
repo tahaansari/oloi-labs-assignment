@@ -18,6 +18,8 @@
   --size-lg: 1.5rem;  /* 24px */
   --size-xl: 2rem;    /* 32px */
   --size-xxl: 2.5rem; /* 40px */
+
+  /* 6 10 14 18 22 26 30 */
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -125,10 +127,11 @@ body{
   color: var(--muted-text);
   vertical-align: middle;
 }
+
 .icon-sm {
-  font-size: clamp(var(--size-md),2vw,var(--size-lg));
+  font-size: 18px;
 }
 
-@media (max-width: 768px ) {
-
+.font-sm{
+  font-size: clamp(0.75rem,2vw,0.875rem);
 }

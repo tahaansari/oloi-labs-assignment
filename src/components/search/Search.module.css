@@ -20,4 +20,5 @@
 
 .search__clear{
   text-decoration: underline;
+  cursor: pointer;
 }

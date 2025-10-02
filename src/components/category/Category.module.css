@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: clamp(var(--size-md),2vw,var(--size-md));
-  padding-right: clamp(var(--size-md),2vw,var(--size-md));
+  padding-left: clamp(var(--size-md),2vw,var(--size-lg));
+  padding-right: clamp(var(--size-md),2vw,var(--size-lg));
   color: var(--muted-text);
   gap: 10px;
 }
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   gap: .4rem;
-  padding: var(--size-sm);
+  padding: 0.75rem;
   text-transform: capitalize;
   background-color: transparent;
   cursor: pointer;
