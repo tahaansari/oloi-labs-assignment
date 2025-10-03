@@ -12,8 +12,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const CategoryMore = ({selectedIndex, category, handleToggle}) => {
+  console.log(category)
   const [showBox,setShowBox] = useState(false);
-
   return (
     <>
       <div className={s.categoryMore}>
@@ -34,7 +34,7 @@ const CategoryMore = ({selectedIndex, category, handleToggle}) => {
                           <div className={s.categoryBoxItem}>
                             <div className={s.categoryBoxItemLeft}>
                               <GrAttachment className="icon icon-sm"/>
-                              {item.name}
+                              {item.type}
                             </div>
                             <div className={s.categoryBoxItemRight}>
                               <InputSwitch selectedIndex={selectedIndex} id={item.id} checked={item.isVisible} handleToggle={handleToggle} />

@@ -21,6 +21,7 @@ function App() {
       name: "Randall Johnsson",
       status: "Active now",
       icon: "🧑‍💼", // you can replace with actual image/icon path
+      isVisible: true
     },
     {
       id: 2,
@@ -30,6 +31,7 @@ function App() {
       location: "in Photos",
       updated: "Edited 12m ago",
       icon: "📁",
+      isVisible: false
     },
     {
       id: 3,
@@ -38,6 +40,7 @@ function App() {
       location: "in Photos/Assets",
       updated: "Edited 12m ago",
       icon: "🖼️",
+      isVisible: false
     },
     {
       id: 4,
@@ -45,6 +48,7 @@ function App() {
       name: "Kristinge Karand",
       status: "Active 2d ago",
       icon: "🧑‍💼",
+      isVisible: true
     },
     {
       id: 5,
@@ -53,6 +57,7 @@ function App() {
       location: "in Videos",
       updated: "Added 12m ago",
       icon: "🎬",
+      isVisible: false
     },
   ]);
 
@@ -71,7 +76,7 @@ function App() {
       <div className="app">
         <div className="search-box">
           <Search />
-          <Category category={category} handleToggle={handleToggle}/>
+          <Category category={Array.from(new Map(data.map(item => [item.name, item])).values())} handleToggle={handleToggle}/>
           <List data={data}/>
         </div>
       </div>

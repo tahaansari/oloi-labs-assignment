@@ -7,10 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const Category = ({category,handleToggle}) => {
+
   
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const showActiveCategory = () => category.filter(item => item.isVisible);
+  const showActiveCategory = () => Array.from(new Map(category.map(item => [item.type, item])).values()).filter(item => item.isVisible);
 
   return (
     <div className={s.category}>
@@ -35,14 +36,14 @@ const Category = ({category,handleToggle}) => {
               onClick={() => setSelectedIndex(item.id)}
             >
               <GrAttachment className="icon" />
-              <span>{item.name}</span>
+              <span>{item.type}</span>
               <span className={s.categoryItemCount}>8</span>
             </motion.button>
           );
         })}
         </AnimatePresence>
       </div>
-      <CategoryMore selectedIndex={selectedIndex} category={category} handleToggle={handleToggle} />
+      <CategoryMore selectedIndex={selectedIndex} category={Array.from(new Map(category.map(item => [item.type, item])).values())} handleToggle={handleToggle} />
     </div>
   );
 };

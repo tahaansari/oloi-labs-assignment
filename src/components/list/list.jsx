@@ -35,8 +35,19 @@ const List = ({ data }) => {
                     <span className={s.itemStatus}></span>
                   </div>
                   <div className={s.itemContent}>
-                    <h4 className={s.itemTitle}>{item.name}</h4>{" "}
-                    {item.details && <span className={s.detailsCount}>{item.details}</span>}
+                    <div className={s.itemHeading}>
+                      <h4 className={s.itemTitle}>{item.name}</h4>{" "}
+                      {item.details && <span className={s.detailsCount}>{item.details}</span>}
+                    </div>
+
+                      <div className={s.itemMeta}>
+                        <span>in Photos</span>
+                        <span>•</span>
+                        <span>Edited <time datetime="2025-10-03T10:20">12m ago</time></span>
+                      </div>
+                    
+
+
                     <ul className={s.itemList}>
                       {item.status && (
                         <li className={s.itemListLi}>

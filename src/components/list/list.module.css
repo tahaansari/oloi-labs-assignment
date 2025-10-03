@@ -39,6 +39,11 @@
 .itemContent{
   /* flex: 1; */
 }
+.itemHeading{
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
 .itemImg{
   border-radius: 10px;
   overflow: hidden;
@@ -125,4 +130,8 @@
   padding: .2rem;
   border-radius: .4rem;
   font-size: clamp(0.75rem,2vw,0.875rem);
+}
+
+.itemMeta{
+  display: flex;
 }
