@@ -45,9 +45,9 @@
   border: none;
 }
 
-.categoryItem:hover{
+/* .categoryItem:hover{
   background-color: var(--body-bg);
-}
+} */
 
 .categoryItemActive{
   color: var(--text-color);

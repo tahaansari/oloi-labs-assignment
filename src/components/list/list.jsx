@@ -10,7 +10,7 @@ const List = ({ data }) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        console.log("Copied to clipboard:", text);
+        // console.log("Copied to clipboard:", text);
         setToolTipText("Link copied!!");
         setTimeout(() => {
           setToolTipText("Copy link");
@@ -40,31 +40,18 @@ const List = ({ data }) => {
                       {item.details && <span className={s.detailsCount}>{item.details}</span>}
                     </div>
 
-                      <div className={s.itemMeta}>
-                        <span>in Photos</span>
-                        <span>•</span>
-                        <span>Edited <time datetime="2025-10-03T10:20">12m ago</time></span>
-                      </div>
-                    
+                    {/* <div className={s.itemMeta}>
+                      <span>in Photos</span>
+                      <span>•</span>
+                      <span>Edited <time datetime="2025-10-03T10:20">12m ago</time></span>
+                    </div> */}
 
+                    <div className={s.metaList}>
+                      {item.status && <span className={`font-sm ${s.metaItem} ${s.itemStatusText}`}>{item.status}</span>}
+                      {item.location && <span className={`font-sm ${s.metaItem} ${s.itemStatusText}`}>{item.location}</span>}
+                      {item.updated && <span className={`font-sm ${s.metaItem} ${s.itemStatusText}`}>{item.updated}</span>}
+                    </div>
 
-                    <ul className={s.itemList}>
-                      {item.status && (
-                        <li className={s.itemListLi}>
-                          <span className={`font-sm ${s.itemStatusText}`}>{item.status}</span>
-                        </li>
-                      )}
-                      {item.location && (
-                        <li className={s.itemListLi}>
-                          <span className={`font-sm ${s.itemStatusText}`}>{item.location}</span>
-                        </li>
-                      )}
-                      {item.updated && (
-                        <li className={s.itemListLi}>
-                          <span className={`font-sm ${s.itemStatusText}`}>{item.updated}</span>
-                        </li>
-                      )}
-                    </ul>
                   </div>
                 </div>
                 <div className={s.listOptions}>

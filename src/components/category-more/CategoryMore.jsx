@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const CategoryMore = ({selectedIndex, category, handleToggle}) => {
-  console.log(category)
+  // console.log(selectedIndex)
   const [showBox,setShowBox] = useState(false);
   return (
     <>

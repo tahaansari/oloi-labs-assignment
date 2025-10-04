@@ -9,7 +9,7 @@
 .search-box{
   border-radius: .8rem;
   background-color: white;
-  box-shadow: 0px 0px 10px #00000074;
+  box-shadow: 0px 0px 20px #0000002b;
   padding-top: clamp(var(--size-md), 2vw, var(--size-lg));
   padding-bottom: clamp(var(--size-md), 2vw, var(--size-lg));
   width: clamp(400px, 60vw ,800px);

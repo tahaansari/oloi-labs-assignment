@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
+import RoundSpinner from "../round-spinner/RoundSpinner";
+
 import s from "./Search.module.css"
 
 const Search = ()=>{
@@ -9,7 +11,7 @@ const Search = ()=>{
 
     return <>
         <div className={s.search}>
-            <FiSearch className="icon"/>
+            {!search ? <FiSearch className="icon"/> : <RoundSpinner/>}
             <input
                 className={s.search__input}
                 type="text"

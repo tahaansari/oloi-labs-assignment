@@ -3,7 +3,7 @@
   align-items: center;
   padding-left:  clamp(var(--size-md),2vw,var(--size-lg));
   padding-right: clamp(var(--size-md),2vw,var(--size-lg));
-  margin-bottom: clamp(var(--size-sm),2vw,var(--size-md));
+  /* margin-bottom: clamp(var(--size-sm),2vw,var(--size-md)); */
   gap: .5rem;
 }
 

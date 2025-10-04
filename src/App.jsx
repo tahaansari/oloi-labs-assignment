@@ -64,7 +64,7 @@ function App() {
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = ID
   const handleToggle = (id, isChecked) => {
     // console.log(id,isChecked)
-    setCategory((prev) =>
+    setData((prev) =>
       prev.map((item) => {
         return item.id === id ? { ...item, isVisible: isChecked } : item;
       })
@@ -76,8 +76,8 @@ function App() {
       <div className="app">
         <div className="search-box">
           <Search />
-          <Category category={Array.from(new Map(data.map(item => [item.name, item])).values())} handleToggle={handleToggle}/>
-          <List data={data}/>
+          {/* <Category category={Array.from(new Map(data.map(item => [item.name, item])).values())} handleToggle={handleToggle}/>
+          <List data={data}/> */}
         </div>
       </div>
     </>
