@@ -1,5 +1,6 @@
 .list{
   padding-top: 1rem;
+  min-height: 394px;
 }
 .listItem{
   padding-left: clamp(var(--size-md),2vw,var(--size-lg));
@@ -65,7 +66,7 @@
   color: var(--muted-text);
 }
 .listOptions{
-  /* display: none; */
+  display: none;
 }
 .listOptionsRow{
   display: flex;
@@ -136,3 +137,8 @@
 /* .itemMeta{
   display: flex;
 } */
+
+.noresult{
+  padding-left: clamp(var(--size-md),2vw,var(--size-lg));
+  padding-right: clamp(var(--size-md),2vw,var(--size-lg));
+}

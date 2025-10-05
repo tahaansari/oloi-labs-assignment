@@ -13,4 +13,5 @@
   padding-top: clamp(var(--size-md), 2vw, var(--size-lg));
   padding-bottom: clamp(var(--size-md), 2vw, var(--size-lg));
   width: clamp(400px, 60vw ,800px);
+  overflow: hidden;
 }

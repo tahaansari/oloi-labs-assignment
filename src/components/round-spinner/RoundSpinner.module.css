@@ -1,12 +1,12 @@
 /* responsive icon size */
-.rot-icon {
-  width: clamp(1.5rem, 3vw, 3rem);
-  height: clamp(1.5rem, 3vw, 3rem);
+.rotIcon {
+  width: clamp(var(--size-lg),2vw,var(--size-xl));
+  height: clamp(var(--size-lg),2vw,var(--size-xl));
   display: inline-block;
 }
 
 /* svg sizing */
-.rot-svg { width:100%; height:100%; display:block; }
+.rotSvg { width:100%; height:100%; display:block; }
 
 /* base track (faint) */
 .track {
@@ -45,4 +45,4 @@
 }
 
 /* optional: pause on hover */
-.rot-icon:hover .progress { animation-play-state: paused; }
+.rotIcon:hover .progress { animation-play-state: paused; }
