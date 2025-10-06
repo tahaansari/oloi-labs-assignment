@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   console.log("app component re-rendered");
-  const [loader,setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [data, setData] = useState([
     {
       id: 1,
@@ -59,6 +59,17 @@ function App() {
 
   const [filterData, setFilterData] = useState(null);
 
+  const [searchText, setSearchText] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const handleSearchTextChange = (searchText) => {
+    setSearchText(searchText)
+  }
+
+  const handleSelectedCategory = (selectedCategory) => {
+    setSelectedCategory(selectedCategory);
+  };
+
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = trueD
   const handleToggle = (id, isChecked) => {
     // console.log(id,isChecked)
@@ -75,18 +86,40 @@ function App() {
   // }
 
   // SEARCH VALUE + CATEGORY TYPE EXAMPLE "K" "ALL", "K" "PEOPLE"
-  
-  // INITIALLY DON'T PRINT ANYTHING
-  const handleSearch = (value) => {
-    setLoader(true);
-    // value === "" ? : setTimeout(()=> setFilterData( data.filter((item)=> item.name.toLowerCase().includes(value.toLowerCase())), setLoader(false)),1000) ;
-    if(value === ""){
-      
-       setTimeout(()=>(setFilterData(null), setLoader(false)),1000)
-    }else if(value === "all"){
 
-    }
-  }
+  // INITIALLY DON'T PRINT ANYTHING
+
+
+  // HANDLE SEARCH WILL ACCEPT 2 PARAMETER 1 FOR SEARCH TEXT AND OTHER FOR CATEGORY
+  const handleSearch = () => {
+    console.log(searchText, selectedCategory);
+    // setLoader(true);
+    // // value === "" ? :  ;
+    // if (value === "") {
+    //   setTimeout(() => (setFilterData(null), setLoader(false)), 1000);
+    // } else if (selectedCategory === "all") {
+    //   console.log('all category')
+    //   setTimeout(
+    //     () =>
+    //       setFilterData(
+    //         data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
+    //         setLoader(false)
+    //       ),
+    //     1000
+    //   );
+    // } else {
+    //   console.log('diff category')
+    //   setTimeout(
+    //     () =>
+    //       setFilterData(
+    //         data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()).filter((item)=> item.type === selectedCategory)),
+    //         setLoader(false)
+    //       ),
+    //     1000
+    //   );
+    // }
+  };
+
   
 
   const uniqueCategory = useMemo(() => {
@@ -97,18 +130,27 @@ function App() {
     <>
       <div className="app">
         <div className="search-box">
-          <Search loader={loader} handleSearch={handleSearch} />
-          {filterData != null && <AnimatePresence>
+          <Search loader={loader} searchText={searchText} handleSearch={handleSearch} handleSearchTextChange={handleSearchTextChange}/>
+          {filterData != null && (
+            <AnimatePresence>
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
-                <Category filterData={filterData} category={uniqueCategory} handleToggle={handleToggle} handleSearch={handleSearch} />
+                <Category
+                  selectedCategory={selectedCategory}
+                  handleSelectedCategory={handleSelectedCategory}
+                  category={uniqueCategory}
+                  filterData={filterData}
+                  handleToggle={handleToggle}
+                  handleSearch={handleSearch}
+                />
                 <List filterData={filterData} />
               </motion.div>
-          </AnimatePresence>}
+            </AnimatePresence>
+          )}
         </div>
       </div>
     </>
