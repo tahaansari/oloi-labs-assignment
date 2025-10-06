@@ -5,7 +5,7 @@ import RoundSpinner from "../round-spinner/RoundSpinner";
 
 import s from "./Search.module.css";
 
-const Search = ({ loader, searchText, handleSearch, handleSearchTextChange }) => {
+const Search = ({ loader, handleSearch, selectedCategory, searchText, setSearchText }) => {
 
   return (
     <>
@@ -17,8 +17,8 @@ const Search = ({ loader, searchText, handleSearch, handleSearchTextChange }) =>
           value={searchText}
           onChange={(e) => {
             const value = e.target.value;
-            handleSearchTextChange(value);
-            handleSearch();
+            setSearchText(value);
+            handleSearch(value, selectedCategory);
           }}
           placeholder="Searching is easier"
         />

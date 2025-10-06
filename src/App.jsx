@@ -91,33 +91,37 @@ function App() {
 
 
   // HANDLE SEARCH WILL ACCEPT 2 PARAMETER 1 FOR SEARCH TEXT AND OTHER FOR CATEGORY
-  const handleSearch = () => {
+  const handleSearch = (searchText, selectedCategory) => {
     console.log(searchText, selectedCategory);
-    // setLoader(true);
-    // // value === "" ? :  ;
-    // if (value === "") {
-    //   setTimeout(() => (setFilterData(null), setLoader(false)), 1000);
-    // } else if (selectedCategory === "all") {
-    //   console.log('all category')
-    //   setTimeout(
-    //     () =>
-    //       setFilterData(
-    //         data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())),
-    //         setLoader(false)
-    //       ),
-    //     1000
-    //   );
-    // } else {
-    //   console.log('diff category')
-    //   setTimeout(
-    //     () =>
-    //       setFilterData(
-    //         data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()).filter((item)=> item.type === selectedCategory)),
-    //         setLoader(false)
-    //       ),
-    //     1000
-    //   );
-    // }
+    setLoader(true);
+    if (searchText === "") {
+      setTimeout(() => (setFilterData(null), setLoader(false)), 1000);
+    } else if (selectedCategory === "all") {
+      console.log('all category')
+      setTimeout(
+        () =>
+          setFilterData(
+            data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())),
+            setLoader(false)
+          ),
+        1000
+      );
+    } else {
+      console.log('filter category')
+      setTimeout(
+        () =>
+          setFilterData(
+            // data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()).filter((item)=> item.type === selectedCategory)),
+            data.filter(
+  (item) =>
+    item.name.toLowerCase().includes(searchText.toLowerCase()) &&
+    item.type === selectedCategory
+),
+            setLoader(false)
+          ),
+        1000
+      );
+    }
   };
 
   
@@ -130,7 +134,7 @@ function App() {
     <>
       <div className="app">
         <div className="search-box">
-          <Search loader={loader} searchText={searchText} handleSearch={handleSearch} handleSearchTextChange={handleSearchTextChange}/>
+          <Search loader={loader} selectedCategory={selectedCategory} searchText={searchText} setSearchText={setSearchText} handleSearch={handleSearch} />
           {filterData != null && (
             <AnimatePresence>
               <motion.div
@@ -140,8 +144,9 @@ function App() {
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
                 <Category
+                  searchText={searchText}
                   selectedCategory={selectedCategory}
-                  handleSelectedCategory={handleSelectedCategory}
+                  setSelectedCategory={setSelectedCategory}
                   category={uniqueCategory}
                   filterData={filterData}
                   handleToggle={handleToggle}

@@ -5,7 +5,7 @@ import s from "./Category.module.css";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const Category = ({ filterData, category, handleToggle, handleSearch, selectedCategory, handleSelectedCategory }) => {
+const Category = ({ filterData, category, handleToggle, handleSearch, searchText, selectedCategory, setSelectedCategory }) => {
   function getCountByType(type) {
     return filterData.reduce((count, item) => {
       if (item.type === type) {
@@ -23,7 +23,7 @@ const Category = ({ filterData, category, handleToggle, handleSearch, selectedCa
       <div className={s.categoryList}>
         <button
           className={`${s.categoryItem} ${selectedCategory === "all" && s.categoryItemActive}`}
-          onClick={() => (handleSelectedCategory("all"), handleSearch())}
+          onClick={() => (setSelectedCategory("all"), handleSearch(searchText, "all"))}
         >
           <span>All</span>
           <span className={s.categoryItemCount}>{filterData.length}</span>
@@ -39,8 +39,8 @@ const Category = ({ filterData, category, handleToggle, handleSearch, selectedCa
                 transition={{ duration: 0.2 }}
                 className={`${s.categoryItem} ${item.type === selectedCategory  && s.categoryItemActive}`}
                 onClick={() => {
-                  handleSelectedCategory(item.type); 
-                  handleSearch();
+                  setSelectedCategory(item.type); 
+                  handleSearch(searchText, item.type);
                 }}
               >
                 <GrAttachment className="icon" />
