@@ -15,23 +15,22 @@ const Category = ({
   setSelectedCategory,
 }) => {
 
-  const uniqueCategory = useMemo(() => {
-    return Array.from(new Map(data.map((item) => [item.name, item])).values());
-  }, [data]);
-
   function getCountByType(type) {
     return type === "all" ? data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())).length : data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === type).length;
   }
 
-  const showActiveCategory = () =>
-    Array.from(new Map(uniqueCategory.map((item) => [item.type, item])).values()).filter((item) => item.isVisible);
+  const showActiveCategory = () => Array.from(new Map(uniqueCategory.map((item) => [item.type, item])).values()).filter((item) => item.isVisible);
 
   return (
     <div className={s.category}>
       <div className={s.categoryList}>
         <button
           className={`${s.categoryItem} ${selectedCategory === "all" && s.categoryItemActive}`}
-          onClick={() => (setSelectedCategory("all"), handleSearch(searchText, "all"))}
+          onClick={() => {
+              setSelectedCategory("all");
+              handleSearch(searchText, "all");
+            }
+          }
         >
           <span>All</span>
           <span className={s.categoryItemCount}>{getCountByType("all")}</span>

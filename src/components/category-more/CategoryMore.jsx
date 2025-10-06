@@ -10,9 +10,7 @@ import { useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const CategoryMore = ({selectedIndex, uniqueCategory, handleToggle}) => {
-  console.log('unique category')
-  console.log(uniqueCategory)
+const CategoryMore = ({selectedCategory, uniqueCategory, handleToggle}) => {
   const [showBox,setShowBox] = useState(false);
   return (
     <>
@@ -37,7 +35,7 @@ const CategoryMore = ({selectedIndex, uniqueCategory, handleToggle}) => {
                               {item.type}
                             </div>
                             <div className={s.categoryBoxItemRight}>
-                              <InputSwitch selectedIndex={selectedIndex} id={item.id} checked={item.isVisible} handleToggle={handleToggle} />
+                              <InputSwitch selectedCategory={selectedCategory} category={item.type} id={item.id} checked={item.isVisible} handleToggle={handleToggle} />
                             </div>
                           </div>
                         </li>

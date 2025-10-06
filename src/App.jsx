@@ -8,8 +8,6 @@ import Search from "./components/search/Search";
 import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
-  console.log("app component re-rendered");
-  
   const [loader, setLoader] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -60,30 +58,23 @@ function App() {
     },
   ]);
   const [filterData, setFilterData] = useState(null);
-  const [filterCount, setFilterCount] = useState(null)
 
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = trueD
   const handleToggle = (id, isChecked) => {
-    // console.log(id,isChecked)
     setData((prev) =>
       prev.map((item) => {
-        return item.id === id ? { ...item, isVisible: isChecked } : true;
+        return item.id === id ? { ...item, isVisible: isChecked } : item;
       })
     );
   };
 
-
-
   // HANDLE SEARCH WILL ACCEPT 2 PARAMETER 1 FOR SEARCH TEXT AND OTHER FOR CATEGORY
   const handleSearch = (searchText, selectedCategory) => {
-    console.log('handleSearch called')
-    console.log(searchText, selectedCategory);
-    // setSelectedCategory('all');
+    console.log('handle search clicked');
     setLoader(true);
     if (searchText === "") {
       setTimeout(() => (setFilterData(null), setLoader(false)), 1000);
     } else if (selectedCategory === "all") {
-      console.log("all category");
       setTimeout(
         () =>
           setFilterData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))),
@@ -93,7 +84,6 @@ function App() {
       );
       
     } else {
-      console.log("filter category");
       setTimeout(
         () =>
           setFilterData(
@@ -107,10 +97,8 @@ function App() {
     }
   };
 
-  // make a dataset for category count which will just update on search change
-
   const uniqueCategory = useMemo(() => {
-    return Array.from(new Map(data.map((item) => [item.name, item])).values());
+    return Array.from(new Map(data.map((item) => [item.type, item])).values());
   }, [data]);
 
   return (

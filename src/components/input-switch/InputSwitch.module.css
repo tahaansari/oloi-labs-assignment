@@ -34,6 +34,11 @@
       background: var(--text-color); /* green */
     }
 
+    .toggle input:checked + .switch.disabled {
+      background: #9a9a9a;
+      opacity: .7;
+    }
+
     .toggle input:checked + .switch::before {
       transform: translateX(12px);
     }

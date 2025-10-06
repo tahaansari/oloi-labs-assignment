@@ -10,14 +10,11 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 const List = ({ filterData }) => {
-  console.log(filterData);
-
   const [toolTipText, setToolTipText] = useState("Copy link");
   const handleCopyLink = (text) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        // console.log("Copied to clipboard:", text);
         setToolTipText("Link copied!!");
         setTimeout(() => {
           setToolTipText("Copy link");
