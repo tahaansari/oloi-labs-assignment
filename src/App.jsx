@@ -9,7 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   console.log("app component re-rendered");
+  
   const [loader, setLoader] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [data, setData] = useState([
     {
       id: 1,
@@ -56,19 +59,8 @@ function App() {
       isVisible: true,
     },
   ]);
-
   const [filterData, setFilterData] = useState(null);
-
-  const [searchText, setSearchText] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const handleSearchTextChange = (searchText) => {
-    setSearchText(searchText)
-  }
-
-  const handleSelectedCategory = (selectedCategory) => {
-    setSelectedCategory(selectedCategory);
-  };
+  const [filterCount, setFilterCount] = useState(null)
 
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = trueD
   const handleToggle = (id, isChecked) => {
@@ -80,43 +72,34 @@ function App() {
     );
   };
 
-  // const handleFilter = (type) => {
-  //   setLoader(true);
-  //   setFilterData(type === "all" ? (setLoader(false), filterData) : (setLoader(false), filterData.filter((item) => item.type === type)))
-  // }
-
-  // SEARCH VALUE + CATEGORY TYPE EXAMPLE "K" "ALL", "K" "PEOPLE"
-
-  // INITIALLY DON'T PRINT ANYTHING
 
 
   // HANDLE SEARCH WILL ACCEPT 2 PARAMETER 1 FOR SEARCH TEXT AND OTHER FOR CATEGORY
   const handleSearch = (searchText, selectedCategory) => {
+    console.log('handleSearch called')
     console.log(searchText, selectedCategory);
+    // setSelectedCategory('all');
     setLoader(true);
     if (searchText === "") {
       setTimeout(() => (setFilterData(null), setLoader(false)), 1000);
     } else if (selectedCategory === "all") {
-      console.log('all category')
+      console.log("all category");
       setTimeout(
         () =>
-          setFilterData(
-            data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())),
-            setLoader(false)
-          ),
+          setFilterData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))),
+          setLoader(false)
+            ,
         1000
       );
+      
     } else {
-      console.log('filter category')
+      console.log("filter category");
       setTimeout(
         () =>
           setFilterData(
-            // data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()).filter((item)=> item.type === selectedCategory)),
             data.filter(
-  (item) =>
-    item.name.toLowerCase().includes(searchText.toLowerCase()) &&
-    item.type === selectedCategory
-),
+              (item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === selectedCategory
+            ),
             setLoader(false)
           ),
         1000
@@ -124,7 +107,7 @@ function App() {
     }
   };
 
-  
+  // make a dataset for category count which will just update on search change
 
   const uniqueCategory = useMemo(() => {
     return Array.from(new Map(data.map((item) => [item.name, item])).values());
@@ -134,7 +117,13 @@ function App() {
     <>
       <div className="app">
         <div className="search-box">
-          <Search loader={loader} selectedCategory={selectedCategory} searchText={searchText} setSearchText={setSearchText} handleSearch={handleSearch} />
+          <Search
+            loader={loader}
+            selectedCategory={selectedCategory}
+            searchText={searchText}
+            setSearchText={setSearchText}
+            handleSearch={handleSearch}
+          />
           {filterData != null && (
             <AnimatePresence>
               <motion.div
@@ -144,13 +133,14 @@ function App() {
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
                 <Category
+                  data={data}
                   searchText={searchText}
                   selectedCategory={selectedCategory}
                   setSelectedCategory={setSelectedCategory}
-                  category={uniqueCategory}
-                  filterData={filterData}
-                  handleToggle={handleToggle}
+                  uniqueCategory={uniqueCategory}
                   handleSearch={handleSearch}
+                  handleToggle={handleToggle}
+                  filterData={filterData}
                 />
                 <List filterData={filterData} />
               </motion.div>

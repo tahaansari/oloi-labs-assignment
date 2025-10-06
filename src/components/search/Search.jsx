@@ -22,8 +22,7 @@ const Search = ({ loader, handleSearch, selectedCategory, searchText, setSearchT
           }}
           placeholder="Searching is easier"
         />
-        {/* onClick={()=>(handleEnableSearch(""), setSearch(""))} */}
-        <span className={s.search__clear}>Clear</span>
+        <span onClick={()=>setSearchText("")} className={s.search__clear}>Clear</span>
       </div>
     </>
   );

@@ -10,9 +10,9 @@ import { useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-
-const CategoryMore = ({selectedIndex, category, handleToggle}) => {
-  // console.log(selectedIndex)
+const CategoryMore = ({selectedIndex, uniqueCategory, handleToggle}) => {
+  console.log('unique category')
+  console.log(uniqueCategory)
   const [showBox,setShowBox] = useState(false);
   return (
     <>
@@ -28,7 +28,7 @@ const CategoryMore = ({selectedIndex, category, handleToggle}) => {
             <div className={s.categoryBoxContent}>
               <ul className={s.categoryBoxList}>
                 { 
-                  category.map((item,index)=>{
+                  uniqueCategory.map((item,index)=>{
                     return (
                         <li key={index} className={s.categoryBoxLi}>
                           <div className={s.categoryBoxItem}>

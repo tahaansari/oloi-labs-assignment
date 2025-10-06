@@ -1,22 +1,30 @@
 import { GrAttachment } from "react-icons/gr";
 import CategoryMore from "../category-more/CategoryMore";
-import { useState } from "react";
 import s from "./Category.module.css";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { useMemo } from "react";
 
-const Category = ({ filterData, category, handleToggle, handleSearch, searchText, selectedCategory, setSelectedCategory }) => {
+const Category = ({
+  data,
+  uniqueCategory,
+  handleToggle,
+  handleSearch,
+  searchText,
+  selectedCategory,
+  setSelectedCategory,
+}) => {
+
+  const uniqueCategory = useMemo(() => {
+    return Array.from(new Map(data.map((item) => [item.name, item])).values());
+  }, [data]);
+
   function getCountByType(type) {
-    return filterData.reduce((count, item) => {
-      if (item.type === type) {
-        return count + 1;
-      }
-      return count;
-    }, 0);
+    return type === "all" ? data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())).length : data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === type).length;
   }
 
   const showActiveCategory = () =>
-    Array.from(new Map(category.map((item) => [item.type, item])).values()).filter((item) => item.isVisible);
+    Array.from(new Map(uniqueCategory.map((item) => [item.type, item])).values()).filter((item) => item.isVisible);
 
   return (
     <div className={s.category}>
@@ -26,7 +34,7 @@ const Category = ({ filterData, category, handleToggle, handleSearch, searchText
           onClick={() => (setSelectedCategory("all"), handleSearch(searchText, "all"))}
         >
           <span>All</span>
-          <span className={s.categoryItemCount}>{filterData.length}</span>
+          <span className={s.categoryItemCount}>{getCountByType("all")}</span>
         </button>
         <AnimatePresence>
           {showActiveCategory().map((item, index) => {
@@ -37,9 +45,9 @@ const Category = ({ filterData, category, handleToggle, handleSearch, searchText
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className={`${s.categoryItem} ${item.type === selectedCategory  && s.categoryItemActive}`}
+                className={`${s.categoryItem} ${item.type === selectedCategory && s.categoryItemActive}`}
                 onClick={() => {
-                  setSelectedCategory(item.type); 
+                  setSelectedCategory(item.type);
                   handleSearch(searchText, item.type);
                 }}
               >
@@ -53,8 +61,8 @@ const Category = ({ filterData, category, handleToggle, handleSearch, searchText
       </div>
       <CategoryMore
         selectedCategory={selectedCategory}
-        category={Array.from(new Map(category.map((item) => [item.type, item])).values())}
         handleToggle={handleToggle}
+        uniqueCategory={uniqueCategory}
       />
     </div>
   );
