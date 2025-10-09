@@ -6,7 +6,6 @@ import RoundSpinner from "../round-spinner/RoundSpinner";
 import s from "./Search.module.css";
 
 const Search = ({ loader, handleSearch, selectedCategory, searchText, setSearchText }) => {
-
   return (
     <>
       <div className={s.search}>
@@ -22,7 +21,15 @@ const Search = ({ loader, handleSearch, selectedCategory, searchText, setSearchT
           }}
           placeholder="Searching is easier"
         />
-        <span onClick={()=>setSearchText("")} className={s.search__clear}>Clear</span>
+        <span
+          onClick={() => {
+            setSearchText("");
+            handleSearch("", "all");
+          }}
+          className={s.search__clear}
+        >
+          Clear
+        </span>
       </div>
     </>
   );

@@ -17,7 +17,7 @@ function App() {
       type: "people",
       name: "Randall Johnsson",
       status: "Active now",
-      icon: "🧑‍💼", // you can replace with actual image/icon path
+      icon: "FaHome", // you can replace with actual image/icon path
       isVisible: true,
     },
     {
@@ -27,7 +27,7 @@ function App() {
       details: "12 Files",
       location: "in Photos",
       updated: "Edited 12m ago",
-      icon: "📁",
+      icon: "FaUser",
       isVisible: true,
     },
     {
@@ -36,7 +36,7 @@ function App() {
       name: "crative_file_frandkies.jpg",
       location: "in Photos/Assets",
       updated: "Edited 12m ago",
-      icon: "🖼️",
+      icon: "FaCog",
       isVisible: true,
     },
     {
@@ -44,7 +44,7 @@ function App() {
       type: "people",
       name: "Kristinge Karand",
       status: "Active 2d ago",
-      icon: "🧑‍💼",
+      icon: "FaCog",
       isVisible: true,
     },
     {
@@ -53,7 +53,7 @@ function App() {
       name: "files_krande_michelle.avi",
       location: "in Videos",
       updated: "Added 12m ago",
-      icon: "🎬",
+      icon: "FaCog",
       isVisible: true,
     },
   ]);
@@ -112,8 +112,8 @@ function App() {
             setSearchText={setSearchText}
             handleSearch={handleSearch}
           />
+          <AnimatePresence>
           {filterData != null && (
-            <AnimatePresence>
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -132,8 +132,8 @@ function App() {
                 />
                 <List filterData={filterData} />
               </motion.div>
-            </AnimatePresence>
           )}
+          </AnimatePresence>
         </div>
       </div>
     </>

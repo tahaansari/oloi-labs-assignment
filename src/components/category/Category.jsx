@@ -1,9 +1,9 @@
 import { GrAttachment } from "react-icons/gr";
+import { FaHome, FaUser, FaCog } from "react-icons/fa";
 import CategoryMore from "../category-more/CategoryMore";
 import s from "./Category.module.css";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useMemo } from "react";
 
 const Category = ({
   data,
@@ -37,6 +37,7 @@ const Category = ({
         </button>
         <AnimatePresence>
           {showActiveCategory().map((item, index) => {
+            const Icon = FaCog;
             return (
               <motion.button
                 key={index}
@@ -50,7 +51,12 @@ const Category = ({
                   handleSearch(searchText, item.type);
                 }}
               >
-                <GrAttachment className="icon" />
+                {/* <FiSearch className="icon" /> */}
+                {
+                  
+                  <item.icon size={20} color="blue" className="icon" />
+                }
+                
                 <span>{item.type}</span>
                 <span className={s.categoryItemCount}>{getCountByType(item.type)}</span>
               </motion.button>
