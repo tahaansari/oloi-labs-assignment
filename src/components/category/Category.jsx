@@ -1,5 +1,5 @@
 import { GrAttachment } from "react-icons/gr";
-import { FaHome, FaUser, FaCog } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
 import CategoryMore from "../category-more/CategoryMore";
 import s from "./Category.module.css";
 
@@ -14,6 +14,12 @@ const Category = ({
   selectedCategory,
   setSelectedCategory,
 }) => {
+
+  const icons = {
+    GrAttachment,
+    FiUser,
+  };
+
 
   function getCountByType(type) {
     return type === "all" ? data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())).length : data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === type).length;
@@ -37,7 +43,7 @@ const Category = ({
         </button>
         <AnimatePresence>
           {showActiveCategory().map((item, index) => {
-            const Icon = FaCog;
+            const IconComponent = icons[item.icon]; // icons = { FiSearch: FiSearch }
             return (
               <motion.button
                 key={index}
@@ -51,12 +57,7 @@ const Category = ({
                   handleSearch(searchText, item.type);
                 }}
               >
-                {/* <FiSearch className="icon" /> */}
-                {
-                  
-                  <item.icon size={20} color="blue" className="icon" />
-                }
-                
+                <IconComponent className="icon" />
                 <span>{item.type}</span>
                 <span className={s.categoryItemCount}>{getCountByType(item.type)}</span>
               </motion.button>

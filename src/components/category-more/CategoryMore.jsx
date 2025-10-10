@@ -1,9 +1,6 @@
 import { GoGear } from "react-icons/go";
 import { GrAttachment } from "react-icons/gr";
-import { LuUser } from "react-icons/lu";
-import { RiChat3Line } from "react-icons/ri";
-import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
-import { BsList } from "react-icons/bs";
+import { FiUser } from "react-icons/fi";
 import s from "./CategoryMore.module.css";
 import InputSwitch from "../input-switch/InputSwitch";
 import { useState } from "react";
@@ -11,7 +8,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CategoryMore = ({selectedCategory, uniqueCategory, handleToggle}) => {
+
   const [showBox,setShowBox] = useState(false);
+
+  const icons = {
+    GrAttachment,
+    FiUser,
+  };
+
   return (
     <>
       <div className={s.categoryMore}>
@@ -27,11 +31,12 @@ const CategoryMore = ({selectedCategory, uniqueCategory, handleToggle}) => {
               <ul className={s.categoryBoxList}>
                 { 
                   uniqueCategory.map((item,index)=>{
+                    const IconComponent = icons[item.icon]; // icons = { FiSearch: FiSearch }
                     return (
                         <li key={index} className={s.categoryBoxLi}>
                           <div className={s.categoryBoxItem}>
                             <div className={s.categoryBoxItemLeft}>
-                              <GrAttachment className="icon icon-sm"/>
+                              <IconComponent className="icon icon-sm" />
                               {item.type}
                             </div>
                             <div className={s.categoryBoxItemRight}>

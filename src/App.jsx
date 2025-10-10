@@ -17,7 +17,7 @@ function App() {
       type: "people",
       name: "Randall Johnsson",
       status: "Active now",
-      icon: "FaHome", // you can replace with actual image/icon path
+      icon: "FiUser", // you can replace with actual image/icon path
       isVisible: true,
     },
     {
@@ -27,7 +27,7 @@ function App() {
       details: "12 Files",
       location: "in Photos",
       updated: "Edited 12m ago",
-      icon: "FaUser",
+      icon: "GrAttachment",
       isVisible: true,
     },
     {
@@ -36,7 +36,7 @@ function App() {
       name: "crative_file_frandkies.jpg",
       location: "in Photos/Assets",
       updated: "Edited 12m ago",
-      icon: "FaCog",
+      icon: "GrAttachment",
       isVisible: true,
     },
     {
@@ -44,7 +44,7 @@ function App() {
       type: "people",
       name: "Kristinge Karand",
       status: "Active 2d ago",
-      icon: "FaCog",
+      icon: "FiUser",
       isVisible: true,
     },
     {
@@ -53,10 +53,11 @@ function App() {
       name: "files_krande_michelle.avi",
       location: "in Videos",
       updated: "Added 12m ago",
-      icon: "FaCog",
+      icon: "GrAttachment",
       isVisible: true,
     },
   ]);
+
   const [filterData, setFilterData] = useState(null);
 
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = trueD
@@ -70,31 +71,25 @@ function App() {
 
   // HANDLE SEARCH WILL ACCEPT 2 PARAMETER 1 FOR SEARCH TEXT AND OTHER FOR CATEGORY
   const handleSearch = (searchText, selectedCategory) => {
-    console.log('handle search clicked');
+    console.log("handle search clicked");
     setLoader(true);
-    if (searchText === "") {
-      setTimeout(() => (setFilterData(null), setLoader(false)), 1000);
-    } else if (selectedCategory === "all") {
-      setTimeout(
-        () =>
-          setFilterData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))),
-          setLoader(false)
-            ,
-        1000
-      );
-      
-    } else {
-      setTimeout(
-        () =>
+    setTimeout(
+      () => {
+        if (searchText === "") {
+          setFilterData(null);
+        } else if (selectedCategory === "all") {
+          setFilterData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
+        } else {
           setFilterData(
             data.filter(
               (item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === selectedCategory
-            ),
-            setLoader(false)
-          ),
-        1000
-      );
-    }
+            )
+          );
+        }
+        setLoader(false);
+      },
+      500
+    );
   };
 
   const uniqueCategory = useMemo(() => {
@@ -113,7 +108,7 @@ function App() {
             handleSearch={handleSearch}
           />
           <AnimatePresence>
-          {filterData != null && (
+            {filterData != null && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -132,7 +127,7 @@ function App() {
                 />
                 <List filterData={filterData} />
               </motion.div>
-          )}
+            )}
           </AnimatePresence>
         </div>
       </div>

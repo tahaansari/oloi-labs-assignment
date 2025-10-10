@@ -22,3 +22,27 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.quickSearch{
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .8rem;
+  text-transform: lowercase;
+  color: var(--muted-text);
+}
+
+.quickSearch__icon{
+  display: flex;
+  border: 1px solid var(--muted-text);
+  color: var(--muted-text);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.quickSearch__icon:before{
+
+}

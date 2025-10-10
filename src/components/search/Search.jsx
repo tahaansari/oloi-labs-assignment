@@ -30,6 +30,10 @@ const Search = ({ loader, handleSearch, selectedCategory, searchText, setSearchT
         >
           Clear
         </span>
+        <div className={s.quickSearch}>
+           <span className={s.quickSearch__icon}>s</span>
+           Quick Access
+        </div>
       </div>
     </>
   );

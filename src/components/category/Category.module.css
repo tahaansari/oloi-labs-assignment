@@ -26,7 +26,8 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     -ms-overflow-style: none;    
-    scrollbar-width: none;       
+    scrollbar-width: none;
+    min-height: var(--size-3xl);
 }
 .categoryList::-webkit-scrollbar {
   display: none;               
