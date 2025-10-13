@@ -25,6 +25,10 @@ const List = ({ filterData }) => {
       });
   };
 
+  const highLightText = ()=>{
+    return "hello world"
+  }
+
   return (
     <>
       <div className={s.list}>
@@ -52,7 +56,9 @@ const List = ({ filterData }) => {
                       </div>
                       <div className={s.itemContent}>
                         <div className={s.itemHeading}>
-                          <h4 className={s.itemTitle}>{item.name}</h4>{" "}
+
+                          <h4 className={s.itemTitle}>{highLightText(item.name)}</h4>{" "}
+
                           {item.details && <span className={s.detailsCount}>{item.details}</span>}
                         </div>
                         <div className={s.metaList}>

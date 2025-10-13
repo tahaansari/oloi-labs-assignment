@@ -1,5 +1,8 @@
 import { GoGear } from "react-icons/go";
 import { GrAttachment } from "react-icons/gr";
+import { BsList } from "react-icons/bs";
+import { IoChatbubbleOutline } from "react-icons/io5";
+
 import { FiUser } from "react-icons/fi";
 import s from "./CategoryMore.module.css";
 import InputSwitch from "../input-switch/InputSwitch";
@@ -14,6 +17,8 @@ const CategoryMore = ({selectedCategory, uniqueCategory, handleToggle}) => {
   const icons = {
     GrAttachment,
     FiUser,
+    BsList,
+    IoChatbubbleOutline
   };
 
   return (

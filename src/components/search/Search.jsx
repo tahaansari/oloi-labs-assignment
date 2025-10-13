@@ -21,19 +21,22 @@ const Search = ({ loader, handleSearch, selectedCategory, searchText, setSearchT
           }}
           placeholder="Searching is easier"
         />
-        <span
-          onClick={() => {
-            setSearchText("");
-            handleSearch("", "all");
-          }}
-          className={s.search__clear}
-        >
-          Clear
-        </span>
-        <div className={s.quickSearch}>
-           <span className={s.quickSearch__icon}>s</span>
-           Quick Access
-        </div>
+        {searchText != "" ? (
+          <span
+            onClick={() => {
+              setSearchText("");
+              handleSearch("", "all");
+            }}
+            className={s.search__clear}
+          >
+            Clear
+          </span>
+        ) : (
+          <div className={s.quickSearch}>
+            <span className={s.quickSearch__icon}>s</span>
+            Quick Access
+          </div>
+        )}
       </div>
     </>
   );

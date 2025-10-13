@@ -121,15 +121,11 @@ body{
 }
 
 .icon {
-  font-size: clamp(var(--size-md),2vw,var(--size-lg));
+  font-size: clamp(var(--size-lg),2vw,var(--size-xl));
   color: var(--muted-text);
   vertical-align: middle;
 }
 
 .icon-sm {
-  font-size: 18px;
-}
-
-.font-sm{
-  font-size: clamp(0.75rem,2vw,0.875rem);
+  font-size: clamp(var(--size-md),2vw,var(--size-lg));
 }

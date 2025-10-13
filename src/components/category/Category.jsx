@@ -1,5 +1,8 @@
 import { GrAttachment } from "react-icons/gr";
 import { FiUser } from "react-icons/fi";
+import { BsList } from "react-icons/bs";
+import { IoChatbubbleOutline } from "react-icons/io5";
+
 import CategoryMore from "../category-more/CategoryMore";
 import s from "./Category.module.css";
 
@@ -18,7 +21,9 @@ const Category = ({
   const icons = {
     GrAttachment,
     FiUser,
-  };
+    BsList,
+    IoChatbubbleOutline
+  }; 
 
 
   function getCountByType(type) {

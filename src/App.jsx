@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-// import { LuUser } from "react-icons/lu";
 import "./App.css";
 import Category from "./components/category/Category";
 import List from "./components/list";
@@ -56,12 +55,29 @@ function App() {
       icon: "GrAttachment",
       isVisible: true,
     },
+    {
+      id: 6,
+      type: "chats",
+      name: "chats name",
+      status: "unactivated",
+      icon: "IoChatbubbleOutline",
+      isVisible: true,
+    },
+    {
+    
+      id: 7,
+      type: "lists",
+      name: "lists name",
+      icon: "BsList",
+      isVisible: true,
+    },
   ]);
 
   const [filterData, setFilterData] = useState(null);
 
   // TOGGLE ISVISIBLE WHERE CATEGORY ID = trueD
   const handleToggle = (id, isChecked) => {
+    // console.log(`Id is ${id}, make it ${isChecked}`)
     setData((prev) =>
       prev.map((item) => {
         return item.id === id ? { ...item, isVisible: isChecked } : item;
