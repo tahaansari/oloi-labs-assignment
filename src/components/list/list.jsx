@@ -25,8 +25,8 @@ const List = ({ filterData }) => {
       });
   };
 
-  const highLightText = ()=>{
-    return "hello world"
+  const highLightText = (name)=>{
+    return name;
   }
 
   return (
@@ -56,9 +56,8 @@ const List = ({ filterData }) => {
                       </div>
                       <div className={s.itemContent}>
                         <div className={s.itemHeading}>
-
-                          <h4 className={s.itemTitle}>{highLightText(item.name)}</h4>{" "}
-
+{/* highLightText(item.name) */}
+                          <h4 className={s.itemTitle}>{ item.name.replace(/rand/gi,"<span className='highlight'>rand</span>") }</h4>
                           {item.details && <span className={s.detailsCount}>{item.details}</span>}
                         </div>
                         <div className={s.metaList}>
