@@ -9,7 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const List = ({ filterData,searchText }) => {
+const List = ({ filterData, searchText }) => {
   const [toolTipText, setToolTipText] = useState("Copy link");
   const handleCopyLink = (text) => {
     navigator.clipboard
@@ -27,11 +27,12 @@ const List = ({ filterData,searchText }) => {
 
   // getname and searchtext
 
-
-  const highLightText = (name, matchText)=>{
+  const highLightText = (name, matchText) => {
+    console.log('old name - '+name)
     const regex = new RegExp(matchText, "gi");
-     return name.replace(regex,`<span style="background: antiquewhite;">${matchText}</span>`)
-  }
+    console.log('new name - '+name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`));
+    return name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`)
+  };
 
   return (
     <>
@@ -56,11 +57,14 @@ const List = ({ filterData,searchText }) => {
                         <div className={s.itemImg}>
                           <img src="https://placehold.co/46" alt="" />
                         </div>
-                        <span className={s.itemStatus}></span>
+                        {item.status && <span className={`${s.itemStatus} ${{online:s.itemStatusOnline, offline:s.itemStatusOffline, unavailable:s.itemStatusUnavailable}[item.activeStatus] || s.itemStatusUnavailable}`}></span>}
                       </div>
                       <div className={s.itemContent}>
                         <div className={s.itemHeading}>
-                          <h4 className={s.itemTitle} dangerouslySetInnerHTML={{ __html: highLightText(item.name, searchText) }}></h4>
+                          <h4
+                            className={s.itemTitle}
+                            dangerouslySetInnerHTML={{ __html: highLightText(item.name.toLowerCase(), searchText) }}
+                          ></h4>
                           {item.details && <span className={s.detailsCount}>{item.details}</span>}
                         </div>
                         <div className={s.metaList}>

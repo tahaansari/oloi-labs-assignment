@@ -6,6 +6,8 @@ import Search from "./components/search/Search";
 
 import { motion, AnimatePresence } from "framer-motion";
 
+// red | yellow | green
+
 function App() {
   const [loader, setLoader] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -16,6 +18,7 @@ function App() {
       type: "people",
       name: "Randall Johnsson",
       status: "Active now",
+      activeStatus: "online",
       icon: "FiUser", // you can replace with actual image/icon path
       isVisible: true,
     },
@@ -43,6 +46,7 @@ function App() {
       type: "people",
       name: "Kristinge Karand",
       status: "Active 2d ago",
+      activeStatus:"offline",
       icon: "FiUser",
       isVisible: true,
     },
@@ -60,6 +64,7 @@ function App() {
       type: "chats",
       name: "chats name",
       status: "unactivated",
+      activeStatus:"unactivated",
       icon: "IoChatbubbleOutline",
       isVisible: true,
     },

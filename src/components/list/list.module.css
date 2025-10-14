@@ -59,8 +59,17 @@
     width: 17px;
     height: 17px;
     border-radius: 100%;
-    background-color: green;
+  
     border: 3px solid white;
+}
+.itemStatusOnline{
+  background-color: green;
+}
+.itemStatusOffline{
+  background-color: yellow;
+}
+.itemStatusUnavailable{
+  background-color: red;
 }
 .itemStatusText{
   color: var(--muted-text);
@@ -124,6 +133,7 @@
 
 .itemTitle{
   display: inline-block;
+  text-transform: capitalize;
 }
 .detailsCount{
   margin-left: .2rem;
