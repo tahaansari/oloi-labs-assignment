@@ -9,7 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const List = ({ filterData }) => {
+const List = ({ filterData,searchText }) => {
   const [toolTipText, setToolTipText] = useState("Copy link");
   const handleCopyLink = (text) => {
     navigator.clipboard
@@ -25,8 +25,12 @@ const List = ({ filterData }) => {
       });
   };
 
-  const highLightText = (name)=>{
-    return name;
+  // getname and searchtext
+
+
+  const highLightText = (name, matchText)=>{
+    const regex = new RegExp(matchText, "gi");
+     return name.replace(regex,`<span style="background: antiquewhite;">${matchText}</span>`)
   }
 
   return (
@@ -56,8 +60,7 @@ const List = ({ filterData }) => {
                       </div>
                       <div className={s.itemContent}>
                         <div className={s.itemHeading}>
-{/* highLightText(item.name) */}
-                          <h4 className={s.itemTitle}>{ item.name.replace(/rand/gi,"<span className='highlight'>rand</span>") }</h4>
+                          <h4 className={s.itemTitle} dangerouslySetInnerHTML={{ __html: highLightText(item.name, searchText) }}></h4>
                           {item.details && <span className={s.detailsCount}>{item.details}</span>}
                         </div>
                         <div className={s.metaList}>

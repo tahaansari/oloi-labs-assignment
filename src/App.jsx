@@ -141,7 +141,7 @@ function App() {
                   handleToggle={handleToggle}
                   filterData={filterData}
                 />
-                <List filterData={filterData} />
+                <List filterData={filterData} searchText={searchText} />
               </motion.div>
             )}
           </AnimatePresence>
