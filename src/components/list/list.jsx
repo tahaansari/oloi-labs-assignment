@@ -2,6 +2,9 @@ import s from "./list.module.css";
 
 import { MdOpenInNew } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
+
+import { FaFolder,FaImage,FaPlay } from "react-icons/fa";
+
 import { useState } from "react";
 
 import Skeleton from "react-loading-skeleton";
@@ -11,6 +14,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const List = ({ filterData, searchText }) => {
   const [toolTipText, setToolTipText] = useState("Copy link");
+
+  const icons = {
+    FaFolder,
+    FaImage,
+    FaPlay
+  };
+
   const handleCopyLink = (text) => {
     navigator.clipboard
       .writeText(text)
@@ -28,10 +38,12 @@ const List = ({ filterData, searchText }) => {
   // getname and searchtext
 
   const highLightText = (name, matchText) => {
-    console.log('old name - '+name)
+    console.log("old name - " + name);
     const regex = new RegExp(matchText, "gi");
-    console.log('new name - '+name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`));
-    return name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`)
+    console.log(
+      "new name - " + name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`)
+    );
+    return name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`);
   };
 
   return (
@@ -54,10 +66,18 @@ const List = ({ filterData, searchText }) => {
                   <div className={s.listItemWrap}>
                     <div className={s.listItemLeft}>
                       <div className={s.listImgWrap}>
-                        <div className={s.itemImg}>
-                          <img src="https://placehold.co/46" alt="" />
-                        </div>
-                        {item.status && <span className={`${s.itemStatus} ${{online:s.itemStatusOnline, offline:s.itemStatusOffline, unavailable:s.itemStatusUnavailable}[item.activeStatus] || s.itemStatusUnavailable}`}></span>}
+                        <img className="" src={item.thumbnail} alt="" />
+                        {item.status && (
+                          <span
+                            className={`${s.itemStatus} ${
+                              {
+                                online: s.itemStatusOnline,
+                                offline: s.itemStatusOffline,
+                                unavailable: s.itemStatusUnavailable,
+                              }[item.activeStatus] || s.itemStatusUnavailable
+                            }`}
+                          ></span>
+                        )}
                       </div>
                       <div className={s.itemContent}>
                         <div className={s.itemHeading}>

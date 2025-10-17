@@ -6,8 +6,6 @@ import Search from "./components/search/Search";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-// red | yellow | green
-
 function App() {
   const [loader, setLoader] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -21,6 +19,7 @@ function App() {
       activeStatus: "online",
       icon: "FiUser", // you can replace with actual image/icon path
       isVisible: true,
+      thumbnail: `https://picsum.photos/200?random=${Math.random()}`
     },
     {
       id: 2,
@@ -31,6 +30,7 @@ function App() {
       updated: "Edited 12m ago",
       icon: "GrAttachment",
       isVisible: true,
+      thumbnailIcon: `FaFolder`
     },
     {
       id: 3,
@@ -40,6 +40,7 @@ function App() {
       updated: "Edited 12m ago",
       icon: "GrAttachment",
       isVisible: true,
+      thumbnailIcon:"FaImage"
     },
     {
       id: 4,
@@ -49,6 +50,7 @@ function App() {
       activeStatus:"offline",
       icon: "FiUser",
       isVisible: true,
+      thumbnail: `https://picsum.photos/200?random=${Math.random()}`
     },
     {
       id: 5,
@@ -58,6 +60,7 @@ function App() {
       updated: "Added 12m ago",
       icon: "GrAttachment",
       isVisible: true,
+      thumbnailIcon:"FaPlay"
     },
     {
       id: 6,
@@ -67,6 +70,7 @@ function App() {
       activeStatus:"unactivated",
       icon: "IoChatbubbleOutline",
       isVisible: true,
+      thumbnail: `https://picsum.photos/200?random=${Math.random()}`
     },
     {
     
@@ -75,6 +79,7 @@ function App() {
       name: "lists name",
       icon: "BsList",
       isVisible: true,
+      thumbnailIcon:"FaFolder"
     },
   ]);
 

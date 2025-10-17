@@ -6,8 +6,14 @@
   padding-left: clamp(var(--size-md),2vw,var(--size-lg));
   padding-right: clamp(var(--size-md),2vw,var(--size-lg));
 }
-.listItem:not(:last-child) .listItemWrap{
-  border-bottom: 2px solid var(--light-bg);
+.listItem:not(:last-child) .listItemWrap:after{
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: var(--light-bg);
+  position: absolute;
+  left: 0;
+  bottom: 0;
 } 
 .listItem:hover{
   background-color: var(--light-bg);
@@ -17,13 +23,12 @@
 }
 .listItemWrap{
   gap: 1.4rem;
-  /* padding-top: clamp(var(--size-md), 2vw, var(--size-lg));
-  padding-bottom: clamp(var(--size-md), 2vw, var(--size-lg)); */
   padding-top: clamp(0.625rem, 2vw, 0.875rem);
   padding-bottom: clamp(0.625rem, 2vw, 0.875rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .listItemLeft{
   display: flex;
@@ -36,21 +41,19 @@
   position: relative;
   width: 2.875rem;
   height: 2.875rem;
-}
-.itemContent{
-  /* flex: 1; */
+  background: var(--dark-bg);
+  border-radius: var(--size-sm);
+  border-bottom-right-radius: 0;
+  overflow: hidden;
 }
 .itemHeading{
     display: flex;
     align-items: center;
     gap: .4rem;
 }
-.itemImg{
-  border-radius: 10px;
-  overflow: hidden;
-}
-.itemImg img{
-  display: block;
+.listImgWrap img{
+  width: 100%;
+  height: 100%;
 }
 .itemStatus{
     position: absolute;
@@ -66,7 +69,7 @@
   background-color: green;
 }
 .itemStatusOffline{
-  background-color: yellow;
+  background-color: #dfae33;
 }
 .itemStatusUnavailable{
   background-color: red;
@@ -133,7 +136,6 @@
 
 .itemTitle{
   display: inline-block;
-  text-transform: capitalize;
 }
 .detailsCount{
   margin-left: .2rem;

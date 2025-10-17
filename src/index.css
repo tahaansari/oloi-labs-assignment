@@ -3,7 +3,7 @@
  /* #0f0f0f - text color */
  /* #9a9a9a - muted text color */
  /* #f2f2f2 - light bg */
- --body-bg : #e0e0e0;
+ --dark-bg : #e0e0e0;
  --text-color : #0f0f0f;
  --muted-text : #9a9a9a;
  --light-bg : #f2f2f2;
@@ -71,7 +71,7 @@ table {
 body{
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  background-color: var(--body-bg);
+  background-color: var(--dark-bg);
   color: var(--text-color);
   box-sizing: border-box;
 }
