@@ -10,10 +10,12 @@ import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { motion, AnimatePresence } from "framer-motion";
+const List = ({ filterData, searchText, loader }) => {
+  console.log(loader);
 
-const List = ({ filterData, searchText }) => {
   const [toolTipText, setToolTipText] = useState("Copy link");
+
+  console.log(filterData);
 
   const icons = {
     FaFolder,
@@ -35,38 +37,44 @@ const List = ({ filterData, searchText }) => {
       });
   };
 
-  // getname and searchtext
-
   const highLightText = (name, matchText) => {
-    console.log("old name - " + name);
     const regex = new RegExp(matchText, "gi");
-    console.log(
-      "new name - " + name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`)
-    );
     return name.replace(regex, `<span style="background: antiquewhite;">${matchText.toLowerCase()}</span>`);
   };
 
   return (
-    <>
-      <div className={s.list}>
-        {filterData.length === 0 ? (
-          <div className={s.noresult}>No Results Found</div>
-        ) : (
-          <AnimatePresence>
-            {filterData.map((item, index) => {
+    <div className={s.list}>
+      {loader
+        ? [...Array(5)].map((_, i) => (
+            <div key={i} className={s.listItem}>
+              <div className={s.listItemWrap}>
+                <div className={s.listItemLeft}>
+                  <Skeleton width={46} height={46}></Skeleton>
+                  <div className={s.itemContent}>
+                    <div className={s.itemHeading}>
+                      <Skeleton width={300} height={20}></Skeleton>
+                    </div>
+                    <Skeleton width={200} height={20}></Skeleton>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        : filterData &&
+          (filterData.length === 0 ? (
+            <div className={s.noresult}>No Results Found</div>
+          ) : (
+            filterData.map((item, index) => {
               const IconComponent = icons[item.thumbnailIcon];
               return (
-                <motion.div
-                  key={index}
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className={s.listItem}
-                >
+                <div className={s.listItem}>
                   <div className={s.listItemWrap}>
                     <div className={s.listItemLeft}>
-                      {IconComponent && <div className={s.listIconWrap}><IconComponent style={{color:"var(--muted-text)"}} /></div>}
+                      {IconComponent && (
+                        <div className={s.listIconWrap}>
+                          <IconComponent style={{ color: "var(--muted-text)" }} />
+                        </div>
+                      )}
                       {item.thumbnail && (
                         <div className={s.listImgWrap}>
                           <img className="" src={item.thumbnail} alt="" />
@@ -92,15 +100,11 @@ const List = ({ filterData, searchText }) => {
                           {item.details && <span className={s.detailsCount}>{item.details}</span>}
                         </div>
                         <div className={s.metaList}>
-                          {item.status && (
-                            <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.status}</span>
-                          )}
+                          {item.status && <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.status}</span>}
                           {item.location && (
                             <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.location}</span>
                           )}
-                          {item.updated && (
-                            <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.updated}</span>
-                          )}
+                          {item.updated && <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.updated}</span>}
                         </div>
                       </div>
                     </div>
@@ -119,29 +123,11 @@ const List = ({ filterData, searchText }) => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        )}
-
-        {/* {[...Array(5)].map((_, i) => (
-          <div key={i} className={s.listItem}>
-              <div className={s.listItemWrap}>
-                <div className={s.listItemLeft}>
-                    <Skeleton width={46} height={46}></Skeleton>
-                  <div className={s.itemContent}>
-                    <div className={s.itemHeading}>
-                      <Skeleton width={300} height={20}></Skeleton>
-                    </div>
-                    <Skeleton width={200} height={20}></Skeleton>
-                  </div>
                 </div>
-              </div>
-            </div>
-        ))} */}
-      </div>
-    </>
+              );
+            })
+          ))}
+    </div>
   );
 };
 

@@ -19,7 +19,7 @@ function App() {
       activeStatus: "online",
       icon: "FiUser", // you can replace with actual image/icon path
       isVisible: true,
-      thumbnail: `https://picsum.photos/200?random=${Math.random()}`
+      thumbnail: `https://picsum.photos/200?random=${Math.random()}`,
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ function App() {
       updated: "Edited 12m ago",
       icon: "GrAttachment",
       isVisible: true,
-      thumbnailIcon: `FaFolder`
+      thumbnailIcon: `FaFolder`,
     },
     {
       id: 3,
@@ -40,17 +40,17 @@ function App() {
       updated: "Edited 12m ago",
       icon: "GrAttachment",
       isVisible: true,
-      thumbnailIcon:"FaImage"
+      thumbnailIcon: "FaImage",
     },
     {
       id: 4,
       type: "people",
       name: "Kristinge Karand",
       status: "Active 2d ago",
-      activeStatus:"offline",
+      activeStatus: "offline",
       icon: "FiUser",
       isVisible: true,
-      thumbnail: `https://picsum.photos/200?random=${Math.random()}`
+      thumbnail: `https://picsum.photos/200?random=${Math.random()}`,
     },
     {
       id: 5,
@@ -60,26 +60,25 @@ function App() {
       updated: "Added 12m ago",
       icon: "GrAttachment",
       isVisible: true,
-      thumbnailIcon:"FaPlay"
+      thumbnailIcon: "FaPlay",
     },
     {
       id: 6,
       type: "chats",
       name: "chats name",
       status: "unactivated",
-      activeStatus:"unactivated",
+      activeStatus: "unactivated",
       icon: "IoChatbubbleOutline",
       isVisible: true,
-      thumbnail: `https://picsum.photos/200?random=${Math.random()}`
+      thumbnail: `https://picsum.photos/200?random=${Math.random()}`,
     },
     {
-    
       id: 7,
       type: "lists",
       name: "lists name",
       icon: "BsList",
       isVisible: true,
-      thumbnailIcon:"FaFolder"
+      thumbnailIcon: "FaFolder",
     },
   ]);
 
@@ -97,25 +96,26 @@ function App() {
 
   // HANDLE SEARCH WILL ACCEPT 2 PARAMETER 1 FOR SEARCH TEXT AND OTHER FOR CATEGORY
   const handleSearch = (searchText, selectedCategory) => {
-    console.log("handle search clicked");
+    // console.log("handle search clicked");
+
+    if (searchText === "") {
+      setFilterData(null);
+      return false;
+    }
+
     setLoader(true);
-    setTimeout(
-      () => {
-        if (searchText === "") {
-          setFilterData(null);
-        } else if (selectedCategory === "all") {
-          setFilterData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
-        } else {
-          setFilterData(
-            data.filter(
-              (item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === selectedCategory
-            )
-          );
-        }
-        setLoader(false);
-      },
-      500
-    );
+    setTimeout(() => {
+      if (selectedCategory === "all") {
+        setFilterData(data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase())));
+      } else {
+        setFilterData(
+          data.filter(
+            (item) => item.name.toLowerCase().includes(searchText.toLowerCase()) && item.type === selectedCategory
+          )
+        );
+      }
+      setLoader(false);
+    }, 1000);
   };
 
   const uniqueCategory = useMemo(() => {
@@ -133,8 +133,10 @@ function App() {
             setSearchText={setSearchText}
             handleSearch={handleSearch}
           />
+          {/* SHOW THIS SECTION ONLY WHEN USER HAVE ENTERED SOMETHING */}
           <AnimatePresence>
-            {filterData != null && (
+          {searchText && (
+            
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -151,9 +153,9 @@ function App() {
                   handleToggle={handleToggle}
                   filterData={filterData}
                 />
-                <List filterData={filterData} searchText={searchText} />
+                <List loader={loader} filterData={filterData} searchText={searchText} />
               </motion.div>
-            )}
+          )}
           </AnimatePresence>
         </div>
       </div>
