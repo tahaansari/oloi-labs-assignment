@@ -3,7 +3,7 @@ import s from "./list.module.css";
 import { MdOpenInNew } from "react-icons/md";
 import { IoIosLink } from "react-icons/io";
 
-import { FaFolder,FaImage,FaPlay } from "react-icons/fa";
+import { FaFolder, FaImage, FaPlay } from "react-icons/fa";
 
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ const List = ({ filterData, searchText }) => {
   const icons = {
     FaFolder,
     FaImage,
-    FaPlay
+    FaPlay,
   };
 
   const handleCopyLink = (text) => {
@@ -54,6 +54,7 @@ const List = ({ filterData, searchText }) => {
         ) : (
           <AnimatePresence>
             {filterData.map((item, index) => {
+              const IconComponent = icons[item.thumbnailIcon];
               return (
                 <motion.div
                   key={index}
@@ -65,20 +66,23 @@ const List = ({ filterData, searchText }) => {
                 >
                   <div className={s.listItemWrap}>
                     <div className={s.listItemLeft}>
-                      <div className={s.listImgWrap}>
-                        <img className="" src={item.thumbnail} alt="" />
-                        {item.status && (
-                          <span
-                            className={`${s.itemStatus} ${
-                              {
-                                online: s.itemStatusOnline,
-                                offline: s.itemStatusOffline,
-                                unavailable: s.itemStatusUnavailable,
-                              }[item.activeStatus] || s.itemStatusUnavailable
-                            }`}
-                          ></span>
-                        )}
-                      </div>
+                      {IconComponent && <div className={s.listIconWrap}><IconComponent style={{color:"var(--muted-text)"}} /></div>}
+                      {item.thumbnail && (
+                        <div className={s.listImgWrap}>
+                          <img className="" src={item.thumbnail} alt="" />
+                          {item.status && (
+                            <span
+                              className={`${s.itemStatus} ${
+                                {
+                                  online: s.itemStatusOnline,
+                                  offline: s.itemStatusOffline,
+                                  unavailable: s.itemStatusUnavailable,
+                                }[item.activeStatus] || s.itemStatusUnavailable
+                              }`}
+                            ></span>
+                          )}
+                        </div>
+                      )}
                       <div className={s.itemContent}>
                         <div className={s.itemHeading}>
                           <h4
@@ -89,13 +93,13 @@ const List = ({ filterData, searchText }) => {
                         </div>
                         <div className={s.metaList}>
                           {item.status && (
-                            <span className={`font-sm ${s.metaItem} ${s.itemStatusText}`}>{item.status}</span>
+                            <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.status}</span>
                           )}
                           {item.location && (
-                            <span className={`font-sm ${s.metaItem} ${s.itemStatusText}`}>{item.location}</span>
+                            <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.location}</span>
                           )}
                           {item.updated && (
-                            <span className={`font-sm ${s.metaItem} ${s.itemStatusText}`}>{item.updated}</span>
+                            <span className={` ${s.metaItem} ${s.itemStatusText}`}>{item.updated}</span>
                           )}
                         </div>
                       </div>
@@ -104,12 +108,12 @@ const List = ({ filterData, searchText }) => {
                       <div className={s.listOptionsRow}>
                         <div className={s.copyIcon}>
                           <IoIosLink onClick={() => handleCopyLink("Hello World..")} className="icon icon-sm" />
-                          <span className={`font-sm ${s.copyIconText}`}>{toolTipText}</span>
+                          <span className={` ${s.copyIconText}`}>{toolTipText}</span>
                         </div>
                         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
                           <div className={s.listOptionsItems}>
                             <MdOpenInNew className="icon-sm" />
-                            <span className="font-sm">New Tab</span>
+                            <span className="">New Tab</span>
                           </div>
                         </a>
                       </div>

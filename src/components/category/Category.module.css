@@ -71,8 +71,8 @@
   border-radius: .25rem;
   background-color: var(--light-bg);
   color: var(--muted-text);
-  font-size: clamp(12px,2vw,14px);
-  line-height: 18px;
+  font-size: 0.75rem;
+  line-height: var(--size-md);
   height: var(--size-md);
   width: var(--size-md);
 }
